@@ -1,0 +1,11 @@
+@import "../../../../shared/variables.scss";
+
+.link {
+    display: inline-block;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: $color-secondary;
+        transition: 0.5s;
+    }
+}
