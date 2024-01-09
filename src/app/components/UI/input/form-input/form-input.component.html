@@ -1,0 +1,20 @@
+<div class="form-input__wrapper">
+    <label class="form-input__label" for="{{id}}">{{label}}</label>
+
+    <input
+        class="form-input__input"
+        [type]="type"
+        [placeholder]="placeholder"
+        [id]="id"
+        [name]="name"   
+        [value]="value"
+        (blur)="onTouched()"
+        (change)="onChange($event)"
+    />
+
+    <ng-container *ngIf="errors">
+        <p class="form-input__error" *ngIf="errors['required']">
+            This field is required
+        </p>
+    </ng-container>
+</div>

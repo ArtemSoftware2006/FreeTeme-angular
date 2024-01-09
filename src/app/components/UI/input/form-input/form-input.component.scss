@@ -1,0 +1,31 @@
+@import "../../../../../shared/variables.scss";
+
+.form-input {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__label {
+        margin-left: 1rem;
+        letter-spacing: 1px;
+    }
+
+    &__input {
+        width: 300px;
+        padding: 5px 15px;
+        border: 2px solid $color-primary;
+        border-radius: 1rem;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 5px $color-primary;
+        }
+    }
+
+    &__error {
+        margin-left: 1rem;
+        color: red;
+    }
+}

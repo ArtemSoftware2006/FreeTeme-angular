@@ -1,0 +1,19 @@
+@import "../../../../../shared/variables.scss";
+
+.primary-button {
+    background-color: $color-primary;
+    font-weight: bold;
+    padding: 10px 45px;
+    letter-spacing: 1px;
+    border: 3px solid $color-primary;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $color-secondary;
+        transition: 0.5s;
+    }
+    &:active {
+        transition: 0s;
+        color: $color-primary;
+    }
+}
