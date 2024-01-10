@@ -1,0 +1,53 @@
+@import "../../../shared/variables.scss";
+
+.deal-card {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        border: 2px solid $color-primary;
+        border-radius: 1rem;
+    }
+
+    &__tags {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    &__title {
+        margin-left: 10px;
+        font-size: $font-size-1;
+        font-weight: bold;
+    }
+
+    &__price {
+
+        margin-right: 10px;
+        &-text {
+            font-size: $font-size-1;
+            font-weight: bold;
+        }
+    }
+
+    &__description {
+        margin-bottom: 8px;
+    }
+
+    &__employer {
+        display:  flex;
+        flex-direction: column;
+    }
+
+    &__footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

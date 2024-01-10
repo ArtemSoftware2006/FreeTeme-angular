@@ -1,0 +1,19 @@
+.deals-page {
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 3fr; 
+        grid-template-rows: auto-fill;
+    }
+
+    &__sidebar {
+        
+    }
+
+    &__content {
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
