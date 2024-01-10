@@ -1,4 +1,18 @@
 
 <div class="authorization-page__wrapper">
-    <app-login-form></app-login-form>
+    <ng-container *ngIf="isSignIn">
+        <app-login-form></app-login-form>
+    </ng-container>
+    <ng-container *ngIf="!isSignIn">
+        <app-registration-form></app-registration-form>
+    </ng-container>
+
+    <app-primary-button 
+        class="authorization-page__btn-switch"
+        type="button" 
+        name="btn-switch" 
+        id="btn-switch" 
+        text="{{isSignIn ? 'Registration' : 'Sign in'}}" 
+        (clicked)="changeForm()"
+    />
 </div>

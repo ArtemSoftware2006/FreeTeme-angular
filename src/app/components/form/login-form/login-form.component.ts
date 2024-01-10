@@ -2,19 +2,25 @@ import { PrimaryButtonComponent } from './../../UI/button/primary-button/primary
 import { Component } from '@angular/core';
 import { FormInputComponent } from '../../UI/input/form-input/form-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { AuthorizationService } from '../../../services/authorization/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [FormInputComponent, PrimaryButtonComponent, ReactiveFormsModule],
+  imports: [FormInputComponent, PrimaryButtonComponent, ReactiveFormsModule, NgIf],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })
 export class LoginFormComponent {
 
+  constructor(public authService : AuthorizationService,
+    public router : Router) { }
+
   loginForm = new FormGroup({
-    login: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    login: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),
   });
 
   handleClick() {
@@ -22,8 +28,13 @@ export class LoginFormComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.controls.login.value);
-    console.log(this.loginForm.controls.login.value)
-    console.log(this.loginForm.controls.password.value);
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.controls["login"].value as string, 
+                            this.loginForm.controls["password"].value as string)
+      .then(() => {
+        this.router.navigate(['/home']);
+      })
+      .catch(error => console.log(error))
+    }
   }
 }

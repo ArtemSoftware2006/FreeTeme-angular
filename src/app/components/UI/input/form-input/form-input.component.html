@@ -9,12 +9,12 @@
         [name]="name"   
         [value]="value"
         (blur)="onTouched()"
-        (change)="onChange($event)"
+        (change)="onChange($any($event.target).value)"
     />
 
-    <ng-container *ngIf="errors">
-        <p class="form-input__error" *ngIf="errors['required']">
-            This field is required
-        </p>
-    </ng-container>
+    <div class="form-input__error">
+        <ng-content #errors>
+        </ng-content>
+    </div>
+    
 </div>

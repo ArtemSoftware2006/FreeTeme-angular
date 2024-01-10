@@ -10,16 +10,44 @@
             type="text"
             name="login"
             id="login"
-            placeholder="login"
-        />
+            placeholder="Login"
+        >
+            <p errors 
+                *ngIf="loginForm.get('login')?.getError('required')  && loginForm.get('login')?.touched" 
+            >
+                Login is required
+            </p>
+            <p errors 
+                *ngIf="loginForm.get('login')?.getError('maxlength') && loginForm.get('login')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+        </app-form-input>
+
         <app-form-input
             formControlName="password"
             label="Password"
             type="password"
             name="password"
             id="password"
-            placeholder="password"
-        />
+            placeholder="Password"
+        >
+            <p errors 
+                *ngIf="(loginForm.get('password')?.hasError('required') || loginForm.get('password')?.value === '') && loginForm.get('password')?.touched"
+            >
+                Password is required
+            </p>
+            <p errors 
+                *ngIf="loginForm.get('password')?.getError('maxlength') && loginForm.get('password')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+            <p errors 
+                *ngIf="loginForm.get('password')?.getError('minlength') && loginForm.get('password')?.touched"
+            >
+                Min length is 6 symbols
+            </p>
+        </app-form-input>
 
     </div>
 

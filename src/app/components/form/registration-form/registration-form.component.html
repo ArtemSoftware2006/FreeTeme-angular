@@ -1,1 +1,112 @@
-<p>registration-form works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" method="post" class="registration-form__wrapper">
+    <h2 class="login-form__title">Registration</h2>
+    
+    <p class="registration-form__description">Pleace, enter your login and password!</p>
+
+    <div class="registration-form__inputs">
+        <app-form-input 
+            formControlName="login"
+            label="Login"
+            type="text"
+            name="login"
+            id="login"
+            placeholder="Login"
+        >
+            <p errors 
+                *ngIf="registerForm.get('login')?.getError('required')  && registerForm.get('login')?.touched" 
+            >
+                Login is required
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('login')?.getError('maxlength') && registerForm.get('login')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+        </app-form-input>
+
+        <app-form-input 
+            formControlName="email"
+            label="Email"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+        >
+            <p errors 
+                *ngIf="registerForm.get('email')?.getError('required')  && registerForm.get('email')?.touched" 
+            >
+                Login is required
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('email')?.getError('email') && registerForm.get('email')?.touched"
+            >
+                It must be email
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('email')?.getError('maxlength') && registerForm.get('email')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+        </app-form-input>
+
+        <app-form-input
+            formControlName="password"
+            label="Password"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+        >
+            <p errors 
+                *ngIf="(registerForm.get('password')?.hasError('required') || registerForm.get('password')?.value === '') && registerForm.get('password')?.touched"
+            >
+                Password is required
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('password')?.getError('maxlength') && registerForm.get('password')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('password')?.getError('minlength') && registerForm.get('password')?.touched"
+            >
+                Min length is 6 symbols
+            </p>
+        </app-form-input>
+
+        <app-form-input
+            formControlName="passwordConfirm"
+            label="Confirm password"
+            type="password"
+            name="passwordConfirm"
+            id="passwordConfirm"
+            placeholder="Password"
+        >
+            <p errors 
+                *ngIf="(registerForm.get('passwordConfirm')?.hasError('required') || registerForm.get('passwordConfirm')?.value === '') && registerForm.get('password')?.touched"
+            >
+                Password is required
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('passwordConfirm')?.getError('maxlength') && registerForm.get('passwordConfirm')?.touched"
+            >
+                Max length is 30 symbols
+            </p>
+            <p errors 
+                *ngIf="registerForm.get('passwordConfirm')?.getError('minlength') && registerForm.get('passwordConfirm')?.touched"
+            >
+                Min length is 6 symbols
+            </p>
+        </app-form-input>
+
+    </div>
+
+    <app-primary-button 
+        (clicked)="handleClick()" 
+        [disabled]="registerForm.invalid"
+        type="submit" 
+        text="register"
+        id="btn-register"
+        name="btn-register"
+    ></app-primary-button>
+</form>
