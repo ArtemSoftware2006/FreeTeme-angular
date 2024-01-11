@@ -1,3 +1,6 @@
+# Клиентское приложение FreeTeme (Angular)
+Созданно в рамках курсе CodeMasters Современный фронтэнд
+
 # HakatonAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
