@@ -3,3 +3,4 @@
 * Нужен бургер меню
 * Нужна адаптация форм регистрации и входа
 * Изменение размеров отступов
+* Добавить прикрепление файлов к заказу (https://www.fl.ru/projects/create/?GA_EVENT_CATEGORY=project_create_header_anonym&ec=project_create_wizard_noauth)
