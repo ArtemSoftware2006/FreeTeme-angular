@@ -6,6 +6,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { AuthorizationPageComponent } from './pages/authorization-page/authorization-page.component';
 import { DealsPageComponent } from './pages/deals-page/deals-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { DealCreateFormComponent } from './components/form/deal-create-form/deal-create-form.component';
+import { DealCreatePageComponent } from './pages/deal-create-page/deal-create-page.component';
 
 export const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -16,5 +18,6 @@ export const routes: Routes = [
     {path: "deals", component: DealsPageComponent},
     {path: "about", component: AboutPageComponent},
     {path: "error", component: ErrorPageComponent},
+    {path : "deal-create", component: DealCreatePageComponent},
     {path: '**', component: ErrorPageComponent}
 ];

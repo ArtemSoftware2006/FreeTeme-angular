@@ -1,0 +1,53 @@
+<form method="post" [formGroup]="dealCreateForm" class="deal-create-form__wrapper">
+    <h2 class="deal-create-form__title">Create Deal</h2>
+    <p class="deal-create-form__description">Please, create deal</p>
+    <div class="deal-create-form__inputs">
+        <app-form-input
+            formControlName="title"
+            type="text"
+            label="Title"
+            placeholder="Title"
+            name="title"
+            id="title"
+        >
+        </app-form-input>
+        <app-form-input
+            formControlName="description"
+            type="text"
+            label="Description"
+            placeholder="Description"
+            name="description"
+            id="description"
+        >
+        </app-form-input>
+        <app-form-input
+            formControlName="minPrice"
+            type="number"
+            label="Min price"
+            placeholder="Min price"
+            name="minPrice"
+            id="minPrice"
+        >
+        </app-form-input>
+        <app-form-input
+            formControlName="maxPrice"
+            type="number"
+            label="Max price"
+            placeholder="Max price"
+            name="maxPrice"
+            id="maxPrice"
+        >
+        </app-form-input>
+        <app-form-input
+            formControlName="location"
+            type="text"
+            label="Location"
+            placeholder="Location"
+            name="location"
+            id="location"
+        >
+        </app-form-input>
+        <input type="date">
+    </div>
+    <app-primary-button [text]="'Create'"></app-primary-button>
+</form>
