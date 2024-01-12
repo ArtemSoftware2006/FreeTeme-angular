@@ -1,6 +1,9 @@
 @import "../../../shared/variables.scss";
 
 .main-footer {
-    background-color: $color-primary;
-    padding: 20px 50px;
+
+    &__wrapper {
+        background-color: $color-primary;
+        padding: 20px 50px;
+    }
 }
