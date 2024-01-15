@@ -11,10 +11,17 @@
         <input type="checkbox">
     </div>
     <div class="deals-page__content">
-        <app-deal-card></app-deal-card>
-        <app-deal-card></app-deal-card>
-        <app-deal-card></app-deal-card>
-        <app-deal-card></app-deal-card>
-        <app-deal-card></app-deal-card>
+        <app-deal-card *ngFor="let deal of deals"
+            [dealCard]="deal"
+        >
+        </app-deal-card>
+
+        <div [class.deals-page__load-more_disabled]="isLoadMoreDisabled">
+            <app-primary-button 
+                type="button" 
+                [text]="'Load more'" 
+                (clicked)="loadMore()"
+            ></app-primary-button>
+        </div>
     </div>
 </div>

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { publishFacade } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Subject, catchError, map, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { IToken } from '../../models/token';
 import { IUser } from '../../models/user';
 import { JwtDecoderService } from '../jwt-decoder/jwt-decoder.service';
@@ -12,7 +11,7 @@ import { JwtDecoderService } from '../jwt-decoder/jwt-decoder.service';
 export class AuthorizationService {
 
   readonly BASE_URL = 'http://localhost:5202';
-  private user : Subject<IUser> = new Subject<IUser>(); 
+  private user : BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(null); 
 
   constructor(private httpClient : HttpClient,
     private jwtDecoder : JwtDecoderService) {}
@@ -45,11 +44,10 @@ export class AuthorizationService {
   public registration(login : string, password : string, passwordConfirm : string, email : string) {
     return new Promise<boolean>((resolve, reject) => {
       this.httpClient.post<IToken>(
-        this.BASE_URL + '/User/Registr',
-        {login, email, password, /*passwordConfirm*/}
+        this.BASE_URL + '/User/Register',
+        {login, email, password, passwordConfirm}
       ).pipe(
         catchError(err => {
-          console.log(err);
           if (err.status === 403) {
             resolve(false); // возвращает false в случае ошибки 403
           }

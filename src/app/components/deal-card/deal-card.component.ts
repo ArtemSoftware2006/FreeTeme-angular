@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DealCard } from './../../models/deal';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-deal-card',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './deal-card.component.scss'
 })
 export class DealCardComponent {
-
+  @Input() dealCard? : DealCard;
 }

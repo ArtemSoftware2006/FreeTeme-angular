@@ -16,4 +16,8 @@
         flex-direction: column;
         gap: 10px;
     }
+
+    &__load-more_disabled {
+        display: none;
+    }
 }
