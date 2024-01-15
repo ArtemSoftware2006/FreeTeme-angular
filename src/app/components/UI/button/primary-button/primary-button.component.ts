@@ -17,6 +17,8 @@ export class PrimaryButtonComponent {
   @Output() clicked: EventEmitter<void> = new EventEmitter<void>();
 
   onClick() {
-    this.clicked.emit();
+    if (!this.disabled) {
+      this.clicked.emit();      
+    }
   }
 }

@@ -17,3 +17,14 @@
         color: $color-primary;
     }
 }
+
+.disabled {
+    background-color: $color-secondary;
+
+    &:hover {
+       
+    }
+    &:active {
+        color: black;
+    }
+}
