@@ -6,7 +6,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { AuthorizationPageComponent } from './pages/authorization-page/authorization-page.component';
 import { DealsPageComponent } from './pages/deals-page/deals-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { DealCreateFormComponent } from './components/form/deal-create-form/deal-create-form.component';
 import { DealCreatePageComponent } from './pages/deal-create-page/deal-create-page.component';
 
 export const routes: Routes = [
@@ -17,7 +16,8 @@ export const routes: Routes = [
     {path: "executors", component: ExecutorsPageComponent},
     {path: "deals", component: DealsPageComponent},
     {path: "about", component: AboutPageComponent},
-    {path: "error", component: ErrorPageComponent},
+    {path: "profile", component: ProfilePageComponent},
     {path : "deal-create", component: DealCreatePageComponent},
+    {path: "error", component: ErrorPageComponent},
     {path: '**', component: ErrorPageComponent}
 ];
