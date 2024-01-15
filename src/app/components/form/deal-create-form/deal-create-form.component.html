@@ -1,4 +1,4 @@
-<form method="post" [formGroup]="dealCreateForm" class="deal-create-form__wrapper">
+<form method="post" [formGroup]="dealCreateForm" (submit)="onSubmit()" class="deal-create-form__wrapper">
     <h2 class="deal-create-form__title">Create Deal</h2>
     <p class="deal-create-form__description">Please, create deal</p>
     <div class="deal-create-form__inputs">
@@ -10,6 +10,24 @@
             name="title"
             id="title"
         >
+            <p errors 
+                *ngIf="(dealCreateForm.get('title')?.hasError('required') || dealCreateForm.get('title')?.value === '') 
+                    && dealCreateForm.get('title')?.touched"
+            >
+                Title is required
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('title')?.getError('maxlength') 
+                    && dealCreateForm.get('title')?.touched"
+            >
+                Max length is 255 symbols
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('title')?.getError('minlength') 
+                    && dealCreateForm.get('title')?.touched"
+            >
+                Min length is 3 symbols
+            </p>
         </app-form-input>
         <app-form-input
             formControlName="description"
@@ -19,6 +37,24 @@
             name="description"
             id="description"
         >
+            <p errors 
+            *ngIf="(dealCreateForm.get('description')?.hasError('required') || dealCreateForm.get('description')?.value === '') 
+                && dealCreateForm.get('description')?.touched"
+            >
+                Description is required
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('description')?.getError('maxlength') 
+                    && dealCreateForm.get('description')?.touched"
+            >
+                Max length is 2000 symbols
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('description')?.getError('minlength') 
+                    && dealCreateForm.get('description')?.touched"
+            >
+                Min length is 3 symbols
+            </p>
         </app-form-input>
         <app-form-input
             formControlName="minPrice"
@@ -28,6 +64,24 @@
             name="minPrice"
             id="minPrice"
         >
+            <p errors 
+            *ngIf="(dealCreateForm.get('minPrice')?.hasError('required') || dealCreateForm.get('minPrice')?.value === '') 
+                && dealCreateForm.get('minPrice')?.touched"
+            >
+                Min price is required
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('minPrice')?.getError('max') 
+                    && dealCreateForm.get('minPrice')?.touched"
+            >
+                Max is 1000000 
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('minPrice')?.getError('min') 
+                    && dealCreateForm.get('minPrice')?.touched"
+            >
+                Min is 0
+            </p>
         </app-form-input>
         <app-form-input
             formControlName="maxPrice"
@@ -37,17 +91,53 @@
             name="maxPrice"
             id="maxPrice"
         >
-        </app-form-input>
-        <app-form-input
-            formControlName="location"
-            type="text"
-            label="Location"
-            placeholder="Location"
-            name="location"
-            id="location"
-        >
-        </app-form-input>
-        <input type="date">
-    </div>
-    <app-primary-button [text]="'Create'"></app-primary-button>
+            <p errors 
+            *ngIf="(dealCreateForm.get('maxPrice')?.hasError('required') || dealCreateForm.get('maxPrice')?.value === '') 
+                && dealCreateForm.get('maxPrice')?.touched"
+            >
+                Min price is required
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('maxPrice')?.getError('max') 
+                    && dealCreateForm.get('maxPrice')?.touched"
+            >
+                Max is 1000000 
+            </p>
+            <p errors 
+                *ngIf="dealCreateForm.get('maxPrice')?.getError('min') 
+                    && dealCreateForm.get('maxPrice')?.touched"
+            >
+                Min is 0
+            </p>
+            </app-form-input>
+            <app-form-input
+                formControlName="location"
+                type="text"
+                label="Location"
+                placeholder="Location"
+                name="location"
+                id="location"
+            >
+                <p errors 
+                *ngIf="(dealCreateForm.get('location')?.hasError('required') || dealCreateForm.get('location')?.value === '') 
+                    && dealCreateForm.get('location')?.touched"
+                >
+                    Location is required
+                </p>
+                <p errors 
+                    *ngIf="dealCreateForm.get('location')?.getError('maxlength') 
+                        && dealCreateForm.get('location')?.touched"
+                >
+                    Max length is 255 symbols
+                </p>
+                <p errors 
+                    *ngIf="dealCreateForm.get('location')?.getError('minlength') 
+                        && dealCreateForm.get('location')?.touched"
+                >
+                    Min length is 3 symbols
+                </p>
+            </app-form-input>
+            <input type="date">
+        </div>
+    <app-primary-button [text]="'Create'" type="submit" [disabled]="dealCreateForm.invalid"></app-primary-button>
 </form>

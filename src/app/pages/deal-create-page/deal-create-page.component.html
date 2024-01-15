@@ -1,3 +1,10 @@
 <div class="deal-create-page__wrapper">
-    <app-deal-create-form></app-deal-create-form>
+
+    <ng-container *ngIf="!user">
+        Требуется авторизация
+    </ng-container>
+    <ng-container *ngIf="user">
+        <app-deal-create-form (onSubmitEvent)="handleSubmit($event)"></app-deal-create-form>
+    </ng-container>
+    
 </div>
