@@ -1,11 +1,36 @@
 <div class="profile-page__wrapper">
+   
     <app-profile-card
         login="Artem"
         email="pCwJG@example.com"
     >
-
+       <svg image xmlns="http://www.w3.org/2000/svg" width="240" height="240" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
     </app-profile-card>
-    <div>2</div>
+    <div class="profile-page__content"> 
+      <div class="profile-page__content-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+        Profile
+      </div>
+      <ng-container *ngIf="!isEditProfile">
+        <div class="profile-page__content-fields" *ngFor="let field of profileKeyValues">
+          <app-profile-field label="{{field[0]}}" value="{{field[1]}}"></app-profile-field>
+        </div>
+        <button 
+          class="profile-page__content-edit" 
+          mat-raised-button color="primary"
+          (click)="setIsEditProfile(true)"
+        >
+          Edit
+        </button>
+      </ng-container>
+      <ng-container *ngIf="isEditProfile">
+        <app-profile-edit-form [profile]="profile" (setIsEditProfile)="onProfileEdit($event)"></app-profile-edit-form>
+      </ng-container>
+    </div>
     <div>3</div>
     <div>4</div>
 </div>

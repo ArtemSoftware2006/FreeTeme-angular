@@ -1,0 +1,118 @@
+<form 
+    method="post" 
+    [formGroup]="editProfileForm" 
+    (ngSubmit)="onSubmit()"
+    class="profile-edit-form__wrapper"
+>
+    <app-form-input
+        formControlName="firstName"
+        label="First Name"
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="First Name"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('firstName')?.getError('required')  && editProfileForm.get('firstName')?.touched" 
+    >
+        First Name is required
+    </p>
+    </app-form-input>
+    <app-form-input
+        formControlName="secondName"
+        label="Second Name"
+        type="text"
+        name="secondName"
+        id="secondName"
+        placeholder="Second Name"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('secondName')?.getError('required')  && editProfileForm.get('secondName')?.touched" 
+    >
+        Second Name is required
+    </p>
+    </app-form-input>
+    <app-form-input
+        formControlName="lastName"
+        label="Last Name"
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Last Name"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('lastName')?.getError('required')  && editProfileForm.get('lastName')?.touched" 
+    >
+        Last Name is required
+    </p>
+    </app-form-input>
+    <app-form-input
+        formControlName="email"
+        label="Email"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('email')?.getError('required') && editProfileForm.get('email')?.touched" 
+    >
+        email is required
+    </p>
+    <p errors 
+        *ngIf="editProfileForm.get('email')?.getError('email') && editProfileForm.get('email')?.touched" 
+    >
+        This is must be email
+    </p>
+    </app-form-input>
+    <app-form-input
+        formControlName="phone"
+        label="Phone"
+        type="phone"
+        name="phone"
+        id="phone"
+        placeholder="Phone"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('phone')?.getError('required') && editProfileForm.get('phone')?.touched" 
+    >
+        Phone is required
+    </p>
+    </app-form-input>
+    <app-form-input
+        formControlName="description"
+        label="Description"
+        type="text"
+        name="description"
+        id="description"
+        placeholder="Description"
+    >
+    <p errors 
+        *ngIf="editProfileForm.get('description')?.getError('required') && editProfileForm.get('description')?.touched" 
+    >
+        Description is required
+    </p>
+    <p errors 
+        *ngIf="editProfileForm.get('description')?.getError('minlength') && editProfileForm.get('description')?.touched" 
+    >
+        Min length is 10 symbols
+    </p>
+    <p errors 
+        *ngIf="editProfileForm.get('description')?.getError('maxlength') && editProfileForm.get('description')?.touched" 
+    >
+        Max length is 2000 symbols
+    </p>
+    </app-form-input>
+
+    <div>
+        <button 
+            mat-raised-button 
+            class="profile-edit-form__btn"
+            color="primary" 
+            type="submit" 
+            [disabled]="editProfileForm.invalid"
+        >
+            Save
+        </button>
+    </div>
+</form>

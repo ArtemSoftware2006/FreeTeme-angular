@@ -1,3 +1,5 @@
+@import "../../../shared/variables.scss";
+
 .profile-page{
 
     &__wrapper {
@@ -7,5 +9,29 @@
         grid-template-rows: 1fr 1fr;
         gap: 10px;
         padding: 20px;
+    }
+
+    &__content{
+
+        border: 1px solid $color-primary;
+        border-radius: 10px;    
+        padding: 10px;
+
+        &-label {
+            color: $color-primary;
+            font-size: $font-size-1;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        &-fields {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-edit {
+            margin-top: 20px;
+            width: 120px;
+        }
     }
 }
