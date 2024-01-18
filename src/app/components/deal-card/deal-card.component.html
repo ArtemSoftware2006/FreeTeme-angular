@@ -13,4 +13,14 @@
         <div class="deal-card__watch">Likes : 100</div>
         <div class="deal-card__like">Watch : 10000</div>
     </div>
+    <div class="deal-card__view">
+        <button 
+            mat-raised-button 
+            class="deal-card__view-button" 
+            [routerLink]="['/deal-details', dealCard?.id]" 
+            color="primary"
+        >
+            View
+        </button>
+    </div>
 </div>

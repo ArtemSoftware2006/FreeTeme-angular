@@ -44,6 +44,7 @@ export class DealCreateFormComponent {
   onSubmit() {
 
     if (this.user == null || this.dealCreateForm.invalid) {
+
       this.onSubmitEvent.emit(false);
       return
     }

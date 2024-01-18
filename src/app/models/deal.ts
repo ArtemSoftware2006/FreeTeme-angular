@@ -31,3 +31,17 @@ export interface DealCreate {
     approximateDate : Date,
     categoryId : number
 }
+
+export interface DealDetails {
+    id : number,
+    title : string,
+    description : string,
+    datePublication : Date,
+    minPrice : number,
+    maxPrice : number,
+    approximateDate : Date,
+    location : string,
+    status : number,
+    categories : any,
+    creatorUser : any
+}

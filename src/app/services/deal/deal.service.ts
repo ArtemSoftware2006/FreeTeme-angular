@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Deal, DealCard, DealCreate } from '../../models/deal';
+import { Deal, DealCard, DealCreate, DealDetails } from '../../models/deal';
 import { catchError, map, throwError } from 'rxjs';
 import { DealCardsHttpResult } from '../../models/httpResult';
 
@@ -44,6 +44,7 @@ export class DealService {
   }
 
   public create(deal : DealCreate) {
+
     return new Promise<boolean>((resolve, reject) => {
       this.httpClient.post<DealCreate>(
         this.BASE_URL + "/deal/create",
@@ -69,4 +70,31 @@ export class DealService {
       });
     }); 
   }
+
+  public get(id : number) {
+    return new Promise<DealDetails>((resolve, reject) => {
+      this.httpClient.get<DealDetails>(
+        this.BASE_URL + "/deal/get/" + id
+      )
+      .pipe(
+        catchError(err => {
+
+          if (err.status === 401) {
+            reject(err);
+          }
+
+          return throwError(err);
+        }),
+        map((deal: DealDetails) => {
+          return deal;
+        })
+      )
+      .subscribe(result => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      });
+    }) 
+  }
 }
+

@@ -31,7 +31,7 @@ export class DealsPageComponent {
   }
 
   load() {
-    this.dealService.getDeals(this.page++, this.limit)
+    this.dealService.getDeals(this.page, this.limit)
     .then(result => {
       this.deals = [...this.deals, ...result.deals];
       if (result.total <= this.deals.length) {

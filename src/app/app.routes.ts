@@ -7,6 +7,7 @@ import { AuthorizationPageComponent } from './pages/authorization-page/authoriza
 import { DealsPageComponent } from './pages/deals-page/deals-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { DealCreatePageComponent } from './pages/deal-create-page/deal-create-page.component';
+import { DealDetailsPageComponent } from './pages/deal-details-page/deal-details-page.component';
 
 export const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: "about", component: AboutPageComponent},
     {path: "profile", component: ProfilePageComponent},
     {path : "deal-create", component: DealCreatePageComponent},
+    {path : "deal-details/:id", component: DealDetailsPageComponent},
     {path: "error", component: ErrorPageComponent},
     {path: '**', component: ErrorPageComponent}
 ];
