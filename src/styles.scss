@@ -12,36 +12,137 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$hakaton_angular-primary: mat.define-palette(mat.$indigo-palette);
-$hakaton_angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$hakaton_angular-warn: mat.define-palette(mat.$red-palette);
+$md-mcgpalette-primery: (
+    50 : #effbfc,
+    100 : #d7f4f6,
+    200 : #bcedf1,
+    300 : #a1e6eb,
+    400 : #8ce0e6,
+    500 : #78dbe2,
+    600 : #70d7df,
+    700 : #65d2da,
+    800 : #5bcdd6,
+    900 : #48c4cf,
+    A100 : #ffffff,
+    A200 : #f3feff,
+    A400 : #c0faff,
+    A700 : #a7f8ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette-accent: (
+    50 : #e5f4f3,
+    100 : #bee4e1,
+    200 : #93d3cd,
+    300 : #67c1b8,
+    400 : #47b3a9,
+    500 : #26a69a,
+    600 : #229e92,
+    700 : #1c9588,
+    800 : #178b7e,
+    900 : #0d7b6c,
+    A100 : #adfff3,
+    A200 : #7affec,
+    A400 : #47ffe4,
+    A700 : #2dffe0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette-warn: (
+    50 : #f9e0e0,
+    100 : #f0b3b3,
+    200 : #e68080,
+    300 : #db4d4d,
+    400 : #d42626,
+    500 : #cc0000,
+    600 : #c70000,
+    700 : #c00000,
+    800 : #b90000,
+    900 : #ad0000,
+    A100 : #ffd7d7,
+    A200 : #ffa4a4,
+    A400 : #ff7171,
+    A700 : #ff5858,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+$free-teme-primary: mat.define-palette($md-mcgpalette-primery);
+$free-teme-accent: mat.define-palette($md-mcgpalette-accent);
+$free-teme-warn: mat.define-palette($md-mcgpalette-warn);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$hakaton_angular-theme: mat.define-light-theme((
+$test-material-theme: mat.define-light-theme((
   color: (
-    primary: $hakaton_angular-primary,
-    accent: $hakaton_angular-accent,
-    warn: $hakaton_angular-warn,
+    primary: $free-teme-primary,
+    accent: $free-teme-accent,
+    warn: $free-teme-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($hakaton_angular-theme);
+@include mat.all-component-themes($test-material-theme);
 
-@import "../node_modules/normalize.css/normalize.css";
+/* You can add global styles to this file, and also import other style files */
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* For use in src/lib/core/theming/_palette.scss */
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
-}
-
-button {
-    cursor: pointer;
-    border: none;
 }
 
 p {
