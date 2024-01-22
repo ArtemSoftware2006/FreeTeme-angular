@@ -1,0 +1,10 @@
+<mat-chip-listbox class="category-input__wrapper" selectable multiple>
+  <mat-chip-option 
+    *ngFor="let category of selectedCategories" 
+    color="primary" 
+    (click)="toggleSelection(category)"
+    [selected]="category.isSelected"
+  >
+    {{category.name}}
+  </mat-chip-option>
+</mat-chip-listbox>
