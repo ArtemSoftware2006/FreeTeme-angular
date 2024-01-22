@@ -104,6 +104,11 @@
     </p>
     </app-form-input>
 
+    <app-category-input 
+        (toggleSelectionEvent)="toggleCategory($event)"
+        [selectedCategories]="selectedCategories"
+    ></app-category-input>
+
     <div>
         <button 
             mat-raised-button 

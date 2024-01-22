@@ -1,0 +1,63 @@
+
+@if (!hidden) {
+    <form [formGroup]="proposalForm" (ngSubmit)="onSubmit()" method="post" class="proposal-create-form__wrapper">
+        <h2 class="proposal-create-form__title">Create Proposal</h2>
+        
+        <p class="proposal-create-form__description">Pleace, enter your description and price!</p>
+    
+        <div class="proposal-create-form__inputs">
+            <app-form-input 
+                formControlName="description"
+                label="Description"
+                type="text"
+                name="description"
+                id="description"
+                placeholder="Description"
+            >
+                <p errors 
+                    *ngIf="proposalForm.get('description')?.getError('required')  && proposalForm.get('description')?.touched" 
+                >
+                    Description is required
+                </p>
+                <p errors 
+                    *ngIf="proposalForm.get('description')?.getError('minlength')  && proposalForm.get('description')?.touched" 
+                >
+                    Min length is 10 symbols
+                </p>
+                <p errors 
+                    *ngIf="proposalForm.get('description')?.getError('maxlength') && proposalForm.get('description')?.touched"
+                >
+                    Max length is 2000 symbols
+                </p>
+            </app-form-input>
+    
+            <app-form-input
+                formControlName="price"
+                label="Price"
+                type="price"
+                name="price"
+                id="price"
+                placeholder="Price"
+            >
+                <p errors 
+                    *ngIf="(proposalForm.get('price')?.hasError('required') || proposalForm.get('price')?.value === '') && proposalForm.get('price')?.touched"
+                >
+                    price is required
+                </p>
+                <p errors 
+                    *ngIf="proposalForm.get('price')?.getError('maxlength') && proposalForm.get('price')?.touched"
+                >
+                    Max length is 1000000
+                </p>
+                <p errors 
+                    *ngIf="proposalForm.get('price')?.getError('minlength') && proposalForm.get('price')?.touched"
+                >
+                    Min length is 0
+                </p>
+            </app-form-input>
+        </div>
+        <div class="proposal-create-form__btn">
+            <button color="primary" mat-raised-button>Create</button>
+        </div>
+    </form>
+}

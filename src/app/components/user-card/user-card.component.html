@@ -1,1 +1,14 @@
-<p>user-card works!</p>
+<mat-card>
+    <mat-card-header>
+      @if (user?.avatar) {
+        <img mat-card-avatar src="{{ user?.avatar }}" alt="{{ user?.login }}">
+      }
+      @else {
+        <img mat-card-image src="../../../assets/user.svg" alt="{{user?.login}}">
+      }
+      <mat-card-title>{{ user?.login }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ user?.description }}</p>
+    </mat-card-content>
+  </mat-card>
