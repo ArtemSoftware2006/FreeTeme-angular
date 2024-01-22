@@ -138,6 +138,7 @@
                 </p>
             </app-form-input>
             <input type="date" formControlName="date">
+            <app-category-input (toggleSelectionEvent)="toggleCategory($event)"></app-category-input>
         </div>
     <app-primary-button [text]="'Create'" type="submit" [disabled]="dealCreateForm.invalid"></app-primary-button>
 </form>

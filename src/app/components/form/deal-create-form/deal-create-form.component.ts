@@ -1,26 +1,28 @@
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormInputComponent } from './../../UI/input/form-input/form-input.component';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PrimaryButtonComponent } from '../../UI/button/primary-button/primary-button.component';
 import { DealService } from '../../../services/deal/deal.service';
 import { AuthorizationService } from '../../../services/authorization/authorization.service';
 import { DealCreate } from '../../../models/deal';
-import { IUser } from '../../../models/user';
+import { User } from '../../../models/user';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { CategoryInputComponent } from '../../UI/input/category-input/category-input.component';
+import { SelectedCategory } from '../../../models/category';
 
 @Component({
   selector: 'app-deal-create-form',
   standalone: true,
-  imports: [FormInputComponent, ReactiveFormsModule, PrimaryButtonComponent, NgIf],
+  imports: [FormInputComponent, ReactiveFormsModule, PrimaryButtonComponent, CategoryInputComponent, NgIf],
   templateUrl: './deal-create-form.component.html',
   styleUrl: './deal-create-form.component.scss'
 })
 export class DealCreateFormComponent {
-
   @Output() onSubmitEvent : EventEmitter<boolean> = new EventEmitter();
   dealCreateForm! : FormGroup
-  user? : IUser | null
+  user? : User | null
+  selectedCategories : number[] = [];
   constructor (public builder : FormBuilder,
     public dealService : DealService,
     public authService : AuthorizationService,
@@ -51,7 +53,8 @@ export class DealCreateFormComponent {
 
     const deal : DealCreate = {
       ...this.dealCreateForm.value,
-      userId : this.user.id
+      userId : this.user.id,
+      categoryIds : this.selectedCategories
     };
 
     this.dealService.create(deal)
@@ -63,5 +66,19 @@ export class DealCreateFormComponent {
       this.onSubmitEvent.emit(false);
       console.log(error);
     })
+  }
+
+  toggleCategory($event: SelectedCategory) {
+    let category = this.selectedCategories.find(x => x == $event.id);
+
+    if (category) {
+      if (!$event.isSelected) {
+        this.selectedCategories = this.selectedCategories.filter(x => x != $event.id);
+      }
+    } else {
+      if ($event.isSelected) {
+        this.selectedCategories.push($event.id); 
+      }      
+    }
   }
 }
