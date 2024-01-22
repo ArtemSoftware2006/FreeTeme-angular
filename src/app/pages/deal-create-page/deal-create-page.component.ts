@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { DealCreateFormComponent } from '../../components/form/deal-create-form/deal-create-form.component';
-import { IUser } from '../../models/user';
+import { User } from '../../models/user';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgIf } from '@angular/common';
 import { DealService } from '../../services/deal/deal.service';
@@ -13,7 +13,7 @@ import { DealService } from '../../services/deal/deal.service';
 })
 export class DealCreatePageComponent {
     
-  user? : IUser | null
+  user? : User | null
 
   constructor(public authService : AuthorizationService) 
   {}

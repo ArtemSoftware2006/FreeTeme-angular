@@ -1,4 +1,6 @@
-export interface IUser {
+import { Category } from "./category";
+
+export interface User {
     id: number;
     role : string;
     login: string;
@@ -15,7 +17,7 @@ export interface UserProfile {
     balance : number;
     phoneNumber : string;
     description : string;
-    
+    categories : Category[];
 }
 
 export interface UserCard {
@@ -23,5 +25,26 @@ export interface UserCard {
     login : string;
     isVIP : boolean;
     description : string;
+    avatar : any;
     categories : any;
+}
+
+export interface UserUpdateProfileRequest {
+    id : number;
+    firstName : string;
+    secondName : string;
+    lastName : string;
+    phoneNumber : string;
+    description : string;
+    categoryIds : number[];
+}
+
+export interface UserUpdateProfile {
+    id : number;
+    firstName : string;
+    secondName : string;
+    lastName : string;
+    phoneNumber : string;
+    description : string;
+    categories : Category[];
 }

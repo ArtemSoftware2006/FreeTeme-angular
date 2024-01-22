@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { IToken } from '../../models/token';
-import { IUser } from '../../models/user';
+import { User } from '../../models/user';
 import { JwtDecoderService } from '../jwt-decoder/jwt-decoder.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { JwtDecoderService } from '../jwt-decoder/jwt-decoder.service';
 export class AuthorizationService {
 
   readonly BASE_URL = 'http://localhost:5202';
-  private user : BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(null); 
+  private user : BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null); 
 
   constructor(private httpClient : HttpClient,
     private jwtDecoder : JwtDecoderService) {}

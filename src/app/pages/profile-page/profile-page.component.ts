@@ -3,7 +3,7 @@ import {Component, EventEmitter} from '@angular/core';
 import { ProfileFieldComponent } from '../../components/profile-field/profile-field.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user/user.service';
-import { IUser, UserProfile } from '../../models/user';
+import { User, UserProfile, UserUpdateProfile, UserUpdateProfileRequest } from '../../models/user';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ProfileEditFormComponent } from '../../components/form/profile-edit-form/profile-edit-form.component';
@@ -17,14 +17,14 @@ import { ProfileEditFormComponent } from '../../components/form/profile-edit-for
 export class ProfilePageComponent {
   isEditProfile = false;
   profile? : UserProfile; 
-  user? : IUser;
+  user? : User;
   profileKeyValues? : any[]
   constructor(public userService : UserService,
     public authService : AuthorizationService) { }
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
-      this.user = user as IUser;
+      this.user = user as User;
     })
 
     if (this.user != null) {
@@ -42,8 +42,22 @@ export class ProfilePageComponent {
     this.isEditProfile = mode;
   }
 
-  onProfileEdit($event: boolean) {
-    console.log($event);
-    this.isEditProfile = !$event;
+  onProfileEdit($event: UserUpdateProfile | null) {    
+    if ($event) {
+      this.profile = {
+        login : this.profile?.login as string,
+        email : this.profile?.email as string,
+        isVIP : this.profile?.isVIP as boolean,
+        balance : this.profile?.balance as number,
+        ...$event as UserUpdateProfile,
+      }
+
+      this.profileKeyValues = Object.entries(this.profile);
+
+      this.isEditProfile = false;
+    }
+    else {
+      this.isEditProfile = true;
+    }
   }
 }

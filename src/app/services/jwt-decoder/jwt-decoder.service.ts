@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../../models/user';
+import { User } from '../../models/user';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
@@ -9,10 +9,10 @@ export class JwtDecoderService {
 
   constructor() { }
 
-  parse(token: string) : IUser {
+  parse(token: string) : User {
     let parseToken = jwtDecode(token) as any;
 
-    const user : IUser = {
+    const user : User = {
       login : parseToken?.username,
       role : parseToken?.role,
       email : parseToken?.email,

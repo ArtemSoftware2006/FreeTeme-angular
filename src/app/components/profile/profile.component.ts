@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LinkComponent } from '../UI/link/link.component';
-import { IUser } from '../../models/user';
+import { User } from '../../models/user';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgIf } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  public user? : IUser | null
+  public user? : User | null
 
   constructor(public authService : AuthorizationService) {}
 
