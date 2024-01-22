@@ -1,19 +1,22 @@
 <div class="deal-card__wrapper">
-    <div class="deal-card_tags">{{dealCard?.categories}}</div>
+    <div class="deal-card_tags">
+        <mat-chip-listbox >  
+            <mat-chip-option 
+                *ngFor="let category of dealCard?.categories"
+                selectable="false" 
+            >
+                {{category.name}}
+            </mat-chip-option>
+        </mat-chip-listbox>
     <div class="deal-card__head">
         <div class="deal-card__title">{{dealCard?.title}}</div>
         <div class="deal-card__price"><span class="deal-card__price-text">Price : </span>{{dealCard?.minPrice}}-{{dealCard?.maxPrice}}</div>
     </div>
     <div class="deal-card__description">{{dealCard?.description}}</div>
-    <div class="deal-card__employer">
-        {{dealCard?.creatorUserId}}
-    </div>
     <div class="deal-card__footer">
         <div class="deal-card__date">{{dealCard?.datePublication}}</div>
         <div class="deal-card__watch">Likes : 100</div>
         <div class="deal-card__like">Watch : 10000</div>
-    </div>
-    <div class="deal-card__view">
         <button 
             mat-raised-button 
             class="deal-card__view-button" 
@@ -22,5 +25,7 @@
         >
             View
         </button>
+    </div>
+    <div class="deal-card__view">
     </div>
 </div>
