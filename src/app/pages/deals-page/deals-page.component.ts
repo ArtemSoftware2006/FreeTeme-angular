@@ -15,8 +15,8 @@ import { PrimaryButtonComponent } from '../../components/UI/button/primary-butto
 export class DealsPageComponent {
 
   deals: DealCard[] = [];
-  page : number = 0;
-  limit : number = 2;
+  page : number = 1;
+  limit : number = 5;
   isLoadMoreDisabled : boolean = false;
 
   constructor(public dealService : DealService) { }

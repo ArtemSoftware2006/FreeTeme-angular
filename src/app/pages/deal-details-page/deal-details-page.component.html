@@ -1,19 +1,43 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="deal-details-page__wrapper">
+    <div class="deal-details-page__user">
+        <app-user-card></app-user-card>
+    </div>
+
+    <div class="deal-details-page__content">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ deal?.title }}</mat-card-title>
+                <mat-card-subtitle>Price : {{ deal?.minPrice }} - {{deal?.maxPrice}}</mat-card-subtitle>
+                <mat-card-subtitle>Published: {{ deal?.datePublication }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="deal-details-page__description">{{ deal?.description }}</p>
+                <p>Приблизительная дата: {{ deal?.approximateDate }}</p>
+            </mat-card-content>
+            <mat-card-footer>
+            @if (user) {
+                <button 
+                    mat-raised-button 
+                    [hidden]="isRespondBtnDisabled"
+                    color="primary"
+                    (click)="respondDeal()"
+                >
+                    respond
+                </button>
+            }
+            @else {
+                <img src="../../../assets/warning.svg" alt="WARNING">
+                <div>Plese, login for respond</div>
+            }
+            </mat-card-footer>
+        </mat-card>
+        <div class="deal-details-page__proposal">
+            <app-proposal-creaete-form 
+                [dealId]="deal?.id" 
+                [hidden]="isProposalFormDisables"
+                (onProposalCreated)="onCreatedProposal.emit($event)"
+            >
+        </app-proposal-creaete-form>
+        </div>
+    </div>
+</div>
