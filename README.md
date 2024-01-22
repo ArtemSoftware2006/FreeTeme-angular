@@ -1,7 +1,12 @@
 # Клиентское приложение FreeTeme (Angular)
 Созданно в рамках курсе CodeMasters Современный фронтэнд
 
-# HakatonAngular
+# Заупуск приложения
+
+1. Требуется установить Docker и Docker-compose
+2. Перейти в папку ```./server``` и выполнить команду ```docker-compose up``` (сервер запустится на порте 5202, база данных на порте 5432)
+3. Открыть в браузер и открыть порт 4200 (```http://localhost:4200/```)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
