@@ -1,0 +1,31 @@
+@import "../../../../shared/variables.scss";
+
+.proposal-create-form{
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 3px solid $color-primary;
+        border-radius: 1rem;
+        padding: 30px;
+        max-width: 340px;
+        box-shadow: 0 0 5px $color-primary;
+    }
+    &__title {
+        margin-left: 10px;
+    }
+    &__description {
+        margin: 1rem;
+        margin-left: 10px;
+    }
+    &__inputs  {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__btn {
+        margin-top: 10px;
+        display: inline-block;
+    }
+}

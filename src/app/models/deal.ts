@@ -1,3 +1,5 @@
+import { Category } from "./category"
+
 export interface Deal {
     id : number,
     title : string,
@@ -17,7 +19,7 @@ export interface DealCard {
     location : string,
     approximateDate : Date,
     datePublication: Date,
-    categories: any,
+    categories: Category[],
     creatorUserId: number
 }
 
@@ -29,7 +31,7 @@ export interface DealCreate {
     maxPrice : number,
     location : string,
     approximateDate : Date,
-    categoryId : number
+    categoryIds : number[]
 }
 
 export interface DealDetails {
