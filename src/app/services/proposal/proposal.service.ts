@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CreateProposal } from '../../models/proposal';
+import { CreateProposal, ProposalDetails } from '../../models/proposal';
 import { catchError, throwError } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ProposalService {
 
   constructor(private httpClient : HttpClient) { }
 
-  create(proposal : CreateProposal) {
+  public create(proposal : CreateProposal) {
     return new Promise<boolean>((resolve, reject) => {
       this.httpClient.post<boolean>(this.BASE_URL + "/Proposal/Create", proposal)
       .pipe(
@@ -28,5 +28,28 @@ export class ProposalService {
         reject(error);
       });
     }); 
+  }
+
+  public getByUserId(id : number) {
+    return new Promise<ProposalDetails[]>((resolve, reject) => {
+      this.httpClient.get<ProposalDetails[]>(this.BASE_URL + "/Proposal/GetByUserId",
+      {
+        params: {
+          userId : id
+        }
+      })
+      .pipe(
+        catchError(err => {
+          reject(err);
+          return throwError(err);
+        })
+      )
+      .subscribe(result => {
+        resolve(result);
+      },
+      (error) => {
+        reject(error);
+      });
+    })
   }
 }

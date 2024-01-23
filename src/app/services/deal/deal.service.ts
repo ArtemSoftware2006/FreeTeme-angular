@@ -96,5 +96,30 @@ export class DealService {
       });
     }) 
   }
+
+  public getByUserId(id : number) {
+    return new Promise<DealDetails[]>((resolve, reject) => {
+      this.httpClient.get<DealDetails[]>(
+        this.BASE_URL + "/deal/getByUserId",
+        {
+          params: {
+            id : id
+          }
+        }
+      )
+      .pipe(
+        catchError(err => {
+          reject(err);
+          return err;
+        })
+      )
+      .subscribe((result) => {
+        resolve(result as DealDetails[]);
+      },
+      (error) => {
+        reject(error);
+      });
+    })
+  }
 }
 

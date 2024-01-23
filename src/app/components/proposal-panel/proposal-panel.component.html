@@ -1,0 +1,13 @@
+<div class="proposal-panel__wrapper">
+    <div class="proposal-panel__title">Your Proposals</div>
+    <div class="proposal-panel__btn">
+        <button mat-raised-button routerLink="/user-proposals" color="primary">View</button>
+    </div>
+    <div class="proposal-panel__new">
+        new
+        <mat-icon  svgIcon="bell-icon" aria-hidden="false" aria-label="Count new proposal"></mat-icon>
+    </div>
+    <div class="proposal-panel__count">
+        Total count : {{proposals?.length}}
+    </div>
+</div>
