@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserCard } from '../../models/user';
+import { UserCard } from '../../../models/user';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({

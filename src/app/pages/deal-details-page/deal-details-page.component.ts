@@ -4,7 +4,7 @@ import { DealDetails } from '../../models/deal';
 import { DealService } from '../../services/deal/deal.service';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { UserCardComponent } from '../../components/user-card/user-card.component';
+import { UserCardComponent } from '../../components/cards/user-card/user-card.component';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { User } from '../../models/user';
 import { ProposalCreaeteFormComponent } from '../../components/form/proposal-creaete-form/proposal-creaete-form.component';

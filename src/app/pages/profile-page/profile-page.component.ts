@@ -1,5 +1,5 @@
-import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
-import {Component, EventEmitter} from '@angular/core';
+import { ProfileCardComponent } from '../../components/cards/profile-card/profile-card.component';
+import { Component } from '@angular/core';
 import { ProfileFieldComponent } from '../../components/profile-field/profile-field.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user/user.service';

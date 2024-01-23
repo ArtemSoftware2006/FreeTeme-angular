@@ -1,5 +1,5 @@
 import { MatButtonModule } from '@angular/material/button';
-import { DealCard } from './../../models/deal';
+import { DealCard } from '../../../models/deal';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatChipsModule } from '@angular/material/chips';

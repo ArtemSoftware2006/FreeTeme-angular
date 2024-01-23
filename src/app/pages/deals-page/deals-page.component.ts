@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DealCardComponent } from '../../components/deal-card/deal-card.component';
+import { DealCardComponent } from '../../components/cards/deal-card/deal-card.component';
 import { DealService } from '../../services/deal/deal.service';
 import { DealCard } from '../../models/deal';
 import { NgFor, registerLocaleData } from '@angular/common';
