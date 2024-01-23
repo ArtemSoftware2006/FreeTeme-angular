@@ -17,7 +17,8 @@ import { NgFor, NgIf } from '@angular/common';
 export class CategoryInputComponent {
 
   categories? : Category[];
-  @Input() selectedCategories : SelectedCategory[] = [];
+  @Input() alreadySelectedCategories : SelectedCategory[] = [];
+  selectedCategories : SelectedCategory[] = [];
   @Output() toggleSelectionEvent = new EventEmitter<SelectedCategory>();
   constructor(public categoryService : CategoryService) 
   { }
@@ -28,10 +29,10 @@ export class CategoryInputComponent {
       this.categories = categories
 
       this.selectedCategories = this.categories.map(category => {
-        if (!this.selectedCategories.find(x => x.id === category.id)) {
-          return {id: category.id, name: category.name, isSelected: false};
+        if (this.alreadySelectedCategories.find(x => x.id === category.id)) {
+          return {id: category.id, name: category.name, isSelected: true};
         }
-        return {...category, isSelected: true};
+        return {...category, isSelected: false};
       });
     })
     .catch(err => console.log(err))

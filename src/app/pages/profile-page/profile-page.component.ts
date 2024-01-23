@@ -7,10 +7,15 @@ import { User, UserProfile, UserUpdateProfile, UserUpdateProfileRequest } from '
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ProfileEditFormComponent } from '../../components/form/profile-edit-form/profile-edit-form.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ProposalPanelComponent } from '../../components/proposal-panel/proposal-panel.component';
+import { DealPanelComponent } from '../../components/deal-panel/deal-panel.component';
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [ProfileCardComponent, ProfileFieldComponent, ProfileEditFormComponent, MatButtonModule, NgFor, NgIf],
+  imports: [ProfileCardComponent, ProfileFieldComponent, ProfileEditFormComponent, ProposalPanelComponent, DealPanelComponent,
+       MatChipsModule, MatButtonModule, 
+       NgFor, NgIf],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss'
 })
@@ -51,6 +56,8 @@ export class ProfilePageComponent {
         balance : this.profile?.balance as number,
         ...$event as UserUpdateProfile,
       }
+
+      console.log(this.profile);
 
       this.profileKeyValues = Object.entries(this.profile);
 

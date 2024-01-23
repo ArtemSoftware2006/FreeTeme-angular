@@ -47,6 +47,10 @@ export class ProfileEditFormComponent {
     this.selectedCategories = (this.profile as UserProfile).categories.map(category => {
       return {id: category.id, name: category.name, isSelected: true}
     });
+
+    this.categories = (this.profile as UserProfile).categories.map(category => {
+      return category.id
+    });
   }
   
   toggleCategory($event: SelectedCategory) {
@@ -54,11 +58,13 @@ export class ProfileEditFormComponent {
 
     if (category) {
       if (!$event.isSelected) {
+        this.selectedCategories = this.selectedCategories.filter(x => x.id != $event.id);
         this.categories = this.categories.filter(x => x != $event.id);
       }
     } else {
       if ($event.isSelected) {
-        this.categories.push($event.id); 
+        this.selectedCategories = [...this.selectedCategories, $event];
+        this.categories = [...this.categories, $event.id]; 
       }      
     }
   }
@@ -75,6 +81,8 @@ export class ProfileEditFormComponent {
         description : this.editProfileForm.get('description')?.value,
         categories : this.selectedCategories,
       };
+
+      console.log({...profile, categoryIds : this.categories});
 
       this.userService.updateProfile({...profile, categoryIds : this.categories})
       .then(() => {
