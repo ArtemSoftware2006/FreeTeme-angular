@@ -38,7 +38,7 @@ export interface UserCard {
     isVIP : boolean;
     description : string;
     avatar : any;
-    categories : any;
+    categories : Category[];
 }
 
 export interface UserUpdateProfileRequest {

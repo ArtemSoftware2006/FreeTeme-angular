@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateProposal, ProposalDetails } from '../../models/proposal';
 import { catchError, throwError } from 'rxjs';

@@ -8,6 +8,7 @@
     }
 
     &__title {
+        letter-spacing: 2px;
         color: $color-primary;
         font-size: $font-size-1;
         font-weight: bold;
@@ -17,7 +18,7 @@
         width: 300px;
         padding: 8px;
         border: 3px solid $color-secondary;
-        border-radius: 8px;
+        border-radius: 12px;
 
         &:focus {
             border: 3px solid $color-secondary;
@@ -25,6 +26,16 @@
 
         &:hover {
             cursor: pointer;
+        }
+    }
+
+    &__filter {
+
+        &-title {
+            letter-spacing: 2px;
+            color: $color-primary;
+            font-size: $font-size-1;
+            font-weight: bold;
         }
     }
 }

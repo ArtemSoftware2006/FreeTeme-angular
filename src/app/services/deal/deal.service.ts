@@ -66,5 +66,14 @@ export class DealService {
         })
       );
   }
+
+  public getDelasByTitle(title : string) {
+    return this.restService.restGET<DealDetails[]>("/deal/GetByTitle",{title})
+    .pipe(
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
 }
 

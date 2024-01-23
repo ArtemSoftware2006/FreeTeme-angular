@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { DealCardComponent } from '../../components/cards/deal-card/deal-card.component';
 import { DealService } from '../../services/deal/deal.service';
-import { DealCard } from '../../models/deal';
-import { NgFor, registerLocaleData } from '@angular/common';
+import { DealCard, DealDetails, convertToDealCard } from '../../models/deal';
+import { NgFor } from '@angular/common';
 import { PrimaryButtonComponent } from '../../components/UI/button/primary-button/primary-button.component';
 import { SearchToolComponent } from '../../components/search-tool/search-tool.component';
 
@@ -42,5 +42,23 @@ export class DealsPageComponent {
     error => {
       console.log(error);
     })
+  }
+
+  onSearch($event: DealDetails[]) {
+    this.isLoadMoreDisabled = true;
+    this.deals = convertToDealCard($event);
+  }
+
+  onEmptySerch($event: boolean) {
+    this.isLoadMoreDisabled = false;
+    this.page = 1;
+
+    this.dealService.getDeals(this.page, this.limit)
+    .subscribe(result => {
+      this.deals = result.deals as DealCard[];
+    },
+    error => {
+      console.log(error);
+    });
   }
 }

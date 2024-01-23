@@ -1,6 +1,10 @@
 <div class="deals-page__wrapper">
     <div class="deals-page__sidebar">
-       <app-search-tool></app-search-tool>
+       <app-search-tool 
+            (searched)="onSearch($event)"
+            (emptySearch)="onEmptySerch($event)"
+        >
+        </app-search-tool>
     </div>
     <div class="deals-page__content">
         <app-deal-card *ngFor="let deal of deals"

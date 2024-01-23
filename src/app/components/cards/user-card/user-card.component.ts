@@ -18,7 +18,7 @@ export class UserCardComponent {
       id : 0,
       description : 'some description',
       isVIP : false,
-      categories : {},
+      categories : [],
       avatar : null
     }
   }

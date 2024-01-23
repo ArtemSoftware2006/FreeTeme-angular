@@ -39,7 +39,7 @@ export class RegistrationFormComponent {
       };
 
       this.authService.registration(registerModel)
-      .subscribe(result => {
+      .subscribe(() => {
           this.router.navigate(['/home']);
         },
         error => {

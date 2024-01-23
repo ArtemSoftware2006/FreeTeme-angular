@@ -32,6 +32,12 @@ export class RestService {
         });
     }
 
+    public restPUT<T>(endpoint: string, body: object | null = null): Observable<T> {
+        return this.request('PUT', this.BASE_URL + endpoint, {
+            body : {...body}
+        });
+    }
+
     public request<T>(method: string, endpoint: string, body: any, options: HttpOptions = {}): Observable<T> {
         const context = new HttpContext();
         const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');

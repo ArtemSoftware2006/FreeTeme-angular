@@ -2,6 +2,7 @@
     <div class="search-tool__searchbar">
         <h4 class="search-tool__title">Search</h4>
         <input 
+            (keyup)="search($any($event.target).value)"
             class="search-tool__input" 
             type="text"
             placeholder="Search"

@@ -19,7 +19,7 @@ export class ProposalCreaeteFormComponent {
 
   @Input() hidden = false;
   @Input() dealId? : number;
-  @Output() onProposalCreated = new EventEmitter<boolean>();
+  @Output() proposalCreated = new EventEmitter<boolean>();
   user? : User; 
   proposalForm : FormGroup = new FormGroup({});
 
@@ -54,11 +54,11 @@ export class ProposalCreaeteFormComponent {
 
       this.proposalService.create(proposal)
       .subscribe(() => {
-        this.onProposalCreated.emit(true);
+        this.proposalCreated.emit(true);
       },
       error => {
         console.error(error);
-        this.onProposalCreated.emit(false);
+        this.proposalCreated.emit(false);
       })
     }
   }

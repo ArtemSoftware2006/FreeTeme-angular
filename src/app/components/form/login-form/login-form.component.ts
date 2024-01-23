@@ -36,7 +36,7 @@ export class LoginFormComponent {
       }
 
       this.authService.login(loginModel)
-      .subscribe(result => {
+      .subscribe(() => {
         this.router.navigate(['/home']);
       },
       error => {

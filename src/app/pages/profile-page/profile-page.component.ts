@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ProfileFieldComponent } from '../../components/profile-field/profile-field.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user/user.service';
-import { User, UserProfile, UserUpdateProfile, UserUpdateProfileRequest } from '../../models/user';
+import { User, UserProfile, UserUpdateProfile } from '../../models/user';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ProfileEditFormComponent } from '../../components/form/profile-edit-form/profile-edit-form.component';
@@ -34,7 +34,7 @@ export class ProfilePageComponent {
 
     if (this.user != null) {
       this.userService.getUser(this.user.id)
-      .then((profile : UserProfile) => {
+      .subscribe((profile : UserProfile) => {
         /*
         * Лучше вот так
         * this.profile = {
@@ -43,12 +43,12 @@ export class ProfilePageComponent {
         *
         * */
 
-        this.profile = profile;
+        this.profile = {...profile};
         this.profileKeyValues = Object.entries(this.profile);
-      })
-      .catch((err) => {
+      },
+      (err) => {
         console.log(err);
-      })
+      });
     }
   }
   setIsEditProfile(mode: boolean) {

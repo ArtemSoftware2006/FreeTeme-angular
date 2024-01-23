@@ -19,7 +19,7 @@ import { SelectedCategory } from '../../../models/category';
   styleUrl: './deal-create-form.component.scss'
 })
 export class DealCreateFormComponent {
-  @Output() onSubmitEvent : EventEmitter<boolean> = new EventEmitter();
+  @Output() submitEvent : EventEmitter<boolean> = new EventEmitter();
   dealCreateForm! : FormGroup // Добавь типизацию формы + не забывай ; в конце строк
   user? : User | null
   selectedCategories : number[] = [];
@@ -50,7 +50,7 @@ export class DealCreateFormComponent {
 
     if (this.user == null || this.dealCreateForm.invalid) {
 
-      this.onSubmitEvent.emit(false);
+      this.submitEvent.emit(false);
       return
     }
 
@@ -61,12 +61,12 @@ export class DealCreateFormComponent {
     };
 
     this.dealService.create(deal)
-    .subscribe(result => {
-      this.onSubmitEvent.emit(true);
+    .subscribe(() => {
+      this.submitEvent.emit(true);
       this.router.navigate(['/home']);
     },
     error => {
-      this.onSubmitEvent.emit(false);
+      this.submitEvent.emit(false);
       console.log(error);
     });
   }

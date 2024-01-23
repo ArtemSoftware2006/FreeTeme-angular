@@ -2,8 +2,8 @@ import { SelectedCategory } from './../../../../models/category';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CategoryService } from '../../../../services/category/category.service';
 import { Category } from '../../../../models/category';
-import {MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFor, NgIf } from '@angular/common';
 

@@ -15,4 +15,4 @@ export interface ProposalDetails {
     deal: null;
     userId: number;
     user: any;
-};
+}

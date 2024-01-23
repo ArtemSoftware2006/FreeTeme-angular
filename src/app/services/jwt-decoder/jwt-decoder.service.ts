@@ -10,7 +10,7 @@ export class JwtDecoderService {
   constructor() { }
 
   parse(token: string) : User {
-    let parseToken = jwtDecode(token) as any;
+    const parseToken = jwtDecode(token) as any;
 
     const user : User = {
       login : parseToken?.username,

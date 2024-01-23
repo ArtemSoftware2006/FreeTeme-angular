@@ -5,12 +5,8 @@
         он в разы удобнее выглядит
         https://medium.com/@bhargavr445/angular-17-new-control-work-flow-if-else-if-else-and-for-6e8a1f369693
     -->
-    <ng-container *ngIf="isSignIn">
-        <app-login-form></app-login-form>
-    </ng-container>
-    <ng-container *ngIf="!isSignIn">
-        <app-registration-form></app-registration-form>
-    </ng-container>
+    <app-login-form *ngIf="isSignIn"></app-login-form>
+    <app-registration-form *ngIf="!isSignIn"></app-registration-form>
 
     <!-- Хорошее форматирование кода-->
     <app-primary-button

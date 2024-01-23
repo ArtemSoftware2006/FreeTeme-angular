@@ -1,4 +1,4 @@
-import { User, UserUpdateProfile, UserUpdateProfileRequest } from './../../../models/user';
+import { User, UserUpdateProfile } from './../../../models/user';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserProfile } from '../../../models/user';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { NgIf } from '@angular/common';
 import { UserService } from '../../../services/user/user.service';
 import { AuthorizationService } from '../../../services/authorization/authorization.service';
 import { CategoryInputComponent } from '../../UI/input/category-input/category-input.component';
-import { Category, SelectedCategory } from '../../../models/category';
+import { SelectedCategory } from '../../../models/category';
 
 @Component({
   selector: 'app-profile-edit-form',
@@ -54,7 +54,7 @@ export class ProfileEditFormComponent {
   }
   
   toggleCategory($event: SelectedCategory) {
-    let category = this.categories.find(x => x == $event.id);
+    const category = this.categories.find(x => x == $event.id);
 
     if (category) {
       if (!$event.isSelected) {
@@ -72,7 +72,7 @@ export class ProfileEditFormComponent {
   onSubmit() {
     if (this.editProfileForm.valid) {
 
-      let profile : UserUpdateProfile = {
+      const profile : UserUpdateProfile = {
         id : this.user?.id as number,
         firstName : this.editProfileForm.get('firstName')?.value,
         secondName : this.editProfileForm.get('secondName')?.value,
@@ -82,16 +82,14 @@ export class ProfileEditFormComponent {
         categories : this.selectedCategories,
       };
 
-      console.log({...profile, categoryIds : this.categories});
-
       this.userService.updateProfile({...profile, categoryIds : this.categories})
-      .then(() => {
+      .subscribe(() => {
         this.setIsEditProfile.emit(profile);
-      })
-      .catch(error => {
+      },
+      error => {
         console.log(error);
         this.setIsEditProfile.emit(null);
-      })
+      });
     }
   }
 }

@@ -1,9 +1,8 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { DealCreateFormComponent } from '../../components/form/deal-create-form/deal-create-form.component';
 import { User } from '../../models/user';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { NgIf } from '@angular/common';
-import { DealService } from '../../services/deal/deal.service';
 @Component({
   selector: 'app-deal-create-page',
   standalone: true,

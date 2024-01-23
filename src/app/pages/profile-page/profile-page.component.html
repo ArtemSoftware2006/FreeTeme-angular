@@ -17,7 +17,7 @@
       </div>
       <ng-container *ngIf="!isEditProfile">
         <div class="profile-page__content-fields" *ngFor="let field of profileKeyValues">
-          @if (field[0] == 'categories') 
+          @if (field[0] === 'categories') 
           {
             <mat-chip-listbox >  
                 <mat-chip-option 
