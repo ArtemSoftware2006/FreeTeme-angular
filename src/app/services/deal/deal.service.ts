@@ -2,7 +2,6 @@ import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DealCard, DealCreate, DealDetails } from '../../models/deal';
 import { catchError, map, throwError } from 'rxjs';
-import { DealCardsHttpResult } from '../../models/httpResult';
 import { RestService } from '../rest.service';
 
 @Injectable({
