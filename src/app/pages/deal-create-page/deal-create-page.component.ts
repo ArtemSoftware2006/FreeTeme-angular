@@ -20,7 +20,7 @@ export class DealCreatePageComponent {
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
-      console.log(user);
+      console.log(user); // старайся не оставлять в коде console.log
       this.user = user
     });
   }
