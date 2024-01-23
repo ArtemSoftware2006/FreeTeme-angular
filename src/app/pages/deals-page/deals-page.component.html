@@ -1,14 +1,6 @@
 <div class="deals-page__wrapper">
     <div class="deals-page__sidebar">
-        <h4>Search</h4>
-        <input type="text">
-
-        <h4>Filter</h4>
-        <label>Criteria 1</label>
-        <input type="checkbox"> 
-        <br>
-        <label>Criteria 2</label>
-        <input type="checkbox">
+       <app-search-tool></app-search-tool>
     </div>
     <div class="deals-page__content">
         <app-deal-card *ngFor="let deal of deals"

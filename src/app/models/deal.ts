@@ -13,6 +13,7 @@ export interface Deal {
 export interface DealCard {
     id : number,
     title : string,
+    views :  number,
     description : string,
     minPrice : number,
     maxPrice : number,
@@ -36,6 +37,7 @@ export interface DealCreate {
 
 export interface DealDetails {
     id : number,
+    views :  number,
     title : string,
     description : string,
     datePublication : Date,
@@ -44,6 +46,22 @@ export interface DealDetails {
     approximateDate : Date,
     location : string,
     status : number,
-    categories : any,
+    categories : Category[],
     creatorUser : any
+}
+
+export function convertToDealCard(dealDetails: DealDetails[]): DealCard[] {
+    return dealDetails.map(detail => ({
+        id: detail.id,
+        title: detail.title,
+        views : detail.views,
+        description: detail.description,
+        minPrice: detail.minPrice,
+        maxPrice: detail.maxPrice,
+        location: detail.location,
+        approximateDate: detail.approximateDate,
+        datePublication: detail.datePublication,
+        categories: detail.categories, 
+        creatorUserId: detail.creatorUser.id 
+    }));
 }

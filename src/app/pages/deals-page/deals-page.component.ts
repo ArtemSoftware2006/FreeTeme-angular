@@ -4,11 +4,12 @@ import { DealService } from '../../services/deal/deal.service';
 import { DealCard } from '../../models/deal';
 import { NgFor, registerLocaleData } from '@angular/common';
 import { PrimaryButtonComponent } from '../../components/UI/button/primary-button/primary-button.component';
+import { SearchToolComponent } from '../../components/search-tool/search-tool.component';
 
 @Component({
   selector: 'app-deals-page',
   standalone: true,
-  imports: [DealCardComponent, NgFor, PrimaryButtonComponent],
+  imports: [DealCardComponent, NgFor, PrimaryButtonComponent, SearchToolComponent],
   templateUrl: './deals-page.component.html',
   styleUrl: './deals-page.component.scss'
 })
