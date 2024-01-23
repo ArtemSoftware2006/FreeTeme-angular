@@ -14,7 +14,12 @@ export class AuthorizationService {
   private user : BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null); 
 
   constructor(private httpClient : HttpClient,
-    private jwtDecoder : JwtDecoderService) {}
+    private jwtDecoder : JwtDecoderService) 
+    {
+      if (localStorage.getItem('token')) {
+        this.setSession({ token : localStorage.getItem('token')! });
+      }
+    }
 
   public login(login : string, password : string) {
     return new Promise<boolean>((resolve, reject) => {
