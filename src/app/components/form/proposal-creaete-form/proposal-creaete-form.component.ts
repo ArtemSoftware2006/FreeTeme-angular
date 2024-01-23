@@ -53,11 +53,11 @@ export class ProposalCreaeteFormComponent {
       };
 
       this.proposalService.create(proposal)
-      .then(() => {
+      .subscribe(() => {
         this.onProposalCreated.emit(true);
-      })
-      .catch(err => {
-        console.error(err);
+      },
+      error => {
+        console.error(error);
         this.onProposalCreated.emit(false);
       })
     }

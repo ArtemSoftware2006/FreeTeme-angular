@@ -26,9 +26,11 @@ export class UserDealsPageComponent {
       });
 
       this.dealService.getByUserId(this.user?.id as number)
-      .then((deals : DealDetails[]) => {
-
+      .subscribe((deals : DealDetails[]) => {
         this.deals = convertToDealCard(deals);
+      }, 
+      error => {
+        console.log(error);
       });
     } 
 }

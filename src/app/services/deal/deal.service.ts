@@ -1,125 +1,71 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Deal, DealCard, DealCreate, DealDetails } from '../../models/deal';
+import { DealCard, DealCreate, DealDetails } from '../../models/deal';
 import { catchError, map, throwError } from 'rxjs';
 import { DealCardsHttpResult } from '../../models/httpResult';
+import { RestService } from '../rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DealService {
 
-  public BASE_URL = 'http://localhost:5202'
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private restService: RestService) { }
 
-   public getDeals(page : number, limit : number) {
-    return new Promise<DealCardsHttpResult>((resolve, reject) => {
-      this.httpClient.get<DealCard[]>(
-        this.BASE_URL + "/Deal/Deals",
-        {
-          params: {
-            limit : limit,
-            page : page
-          },
-          observe: 'response'
-        }
-      )
-      .pipe(
-        catchError(err => {
-          return throwError(err);
-        }),
-        map((response : HttpResponse<DealCard[]>) => {
-          const totalCount = response.headers.get('X-Total-Count');
-  
-          return {deals : response.body, total : totalCount}; 
-        })
-      )
-      .subscribe(result => {
-        resolve( {deals : result.deals || [], total : Number(result.total) });
-      }, (error) => {
-        reject(error);
-      });
-    });
-  }
-
-  public create(deal : DealCreate) {
-
-    return new Promise<boolean>((resolve, reject) => {
-      this.httpClient.post<DealCreate>(
-        this.BASE_URL + "/deal/create",
-        deal
-      )
-      .pipe(
-        catchError(err => {
-
-          if (err.status === 401) {
-            reject(err);
-          }
-
-          return throwError(err);
-        }),
-        map((deal: any) => {
-          resolve(true);
-        })
-      )
-      .subscribe((result) => {
-        resolve(true);
-      }, (error) => {
-        reject(error);
-      });
-    }); 
-  }
-
-  public get(id : number) {
-    return new Promise<DealDetails>((resolve, reject) => {
-      this.httpClient.get<DealDetails>(
-        this.BASE_URL + "/deal/get/" + id
-      )
-      .pipe(
-        catchError(err => {
-
-          if (err.status === 401) {
-            reject(err);
-          }
-
-          return throwError(err);
-        }),
-        map((deal: DealDetails) => {
-          return deal;
-        })
-      )
-      .subscribe(result => {
-        resolve(result);
-      }, (error) => {
-        reject(error);
-      });
-    }) 
-  }
-
-  public getByUserId(id : number) {
-    return new Promise<DealDetails[]>((resolve, reject) => {
-      this.httpClient.get<DealDetails[]>(
-        this.BASE_URL + "/deal/getByUserId",
-        {
-          params: {
-            id : id
-          }
-        }
-      )
-      .pipe(
-        catchError(err => {
-          reject(err);
-          return err;
-        })
-      )
-      .subscribe((result) => {
-        resolve(result as DealDetails[]);
+  public getDeals(page: number, limit: number) {
+    return this.restService.restGET<HttpResponse<DealCard[]>>("/Deal/Deals",
+      {
+        limit: limit,
+        page: page,
       },
-      (error) => {
-        reject(error);
-      });
-    })
+      {        
+        observe: 'response'
+      }
+    )
+      .pipe(
+        catchError(err => {
+          return throwError(err);
+        }),
+        map((response: HttpResponse<DealCard[]>) => {
+          console.log(response);
+          const totalCount = response.headers.get('X-Total-Count');
+
+          return { deals: response.body, total: totalCount };
+        })
+      );
+  }
+
+  public create(deal: DealCreate) {
+
+    return this.restService.restPOST<DealCreate>(
+      "/deal/create",
+      deal
+    )
+      .pipe(
+        catchError(err => {
+          return throwError(err);
+        })
+      );
+  }
+
+  public get(id: number) {
+    return this.restService.restGET<DealDetails>("/deal/get/" + id)
+      .pipe(
+        catchError(err => {
+          return throwError(err);
+        })
+      );
+  }
+
+  public getByUserId(id: number) {
+    return this.restService.restGET<DealDetails[]>("/deal/getByUserId",
+      { id: id  })
+      .pipe(
+        catchError(err => {
+          return throwError(err);
+        })
+      );
   }
 }
 

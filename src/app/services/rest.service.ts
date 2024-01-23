@@ -3,41 +3,47 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 type GET_PARAMS = {
-    [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
+    [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean> | any; 
 };
 
 @Injectable({
     providedIn: 'root'
 })
 export class RestService {
-    readonly BASE_URL = 'http://localhost:5202/';
+    readonly BASE_URL = 'http://localhost:5202';
 
     constructor(
         private _http: HttpClient,
     ) {
     }
 
-    public restGET<T>(endpoint: string, params: GET_PARAMS = {}): Observable<T> {
+    public restGET<T>(endpoint: string, params: GET_PARAMS = {}, options : HttpOptions = {}): Observable<T> {
         return this.request('GET', this.BASE_URL + endpoint, {
             params: new HttpParams({
                 fromObject: params
             })
-        });
+        }, 
+        options);
     }
 
     public restPOST<T>(endpoint: string, body: object | null = null): Observable<T> {
         return this.request('POST', this.BASE_URL + endpoint, {
-            ...body
+            body : {...body}
         });
     }
 
-    public request<T>(method: string, endpoint: string, body: any): Observable<T> {
-        const context = new HttpContext()
+    public request<T>(method: string, endpoint: string, body: any, options: HttpOptions = {}): Observable<T> {
+        const context = new HttpContext();
+        const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
         const httpOptions: HttpOptions = {
+            ...options,
             ...body,
-            context,
+            headers : headers,
+            context : context,
         };
+
+        console.log(httpOptions);
 
         return this._http.request(method, endpoint, httpOptions);
     }
@@ -58,21 +64,3 @@ interface HttpOptions {
     responseType?: 'json' | 'blob';
     reportProgress?: boolean;
 }
-
-// Пример использования в сервисе
-// import { Injectable } from '@angular/core';
-// import { RestService } from 'projects/core/src/public-api';
-//
-// @Injectable({
-//     providedIn: 'root'
-// })
-// export class UserService {
-//     constructor(
-//         private _rest: RestService
-//     ) {
-//     }
-//
-//     public getUser(id: number) {
-//         return this._rest.restGET<User>(`user/${id}`);
-//     }
-// }

@@ -40,10 +40,10 @@ export class DealPanelComponent {
     })
 
     this.dealService.getByUserId(this.user?.id as number)
-    .then(result => {
-      this.deals = result;  
-    })
-    .catch(error => {
+    .subscribe(result => {
+      this.deals = result as DealDetails[];  
+    },
+    (error) => {
       console.log(error);
     })
   }

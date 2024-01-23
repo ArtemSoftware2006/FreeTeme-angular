@@ -35,11 +35,11 @@ export class DealDetailsPageComponent {
 
     if (id != null) {
       this.dealService.get(Number(id))
-      .then((deal : DealDetails) => {
+      .subscribe((deal : DealDetails) => {
         this.deal = deal;
         console.log(deal);
-      }) 
-      .catch((error) => {
+      }, 
+      (error) => {
         console.log(error);
       })
     }

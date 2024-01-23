@@ -2,19 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { IToken } from '../../models/token';
-import { User } from '../../models/user';
+import { LoginModel, RegisterModel, User } from '../../models/user';
 import { JwtDecoderService } from '../jwt-decoder/jwt-decoder.service';
+import { RestService } from '../rest.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthorizationService {
 
-  readonly BASE_URL = 'http://localhost:5202';
   private user : BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null); 
 
-  constructor(private httpClient : HttpClient,
-    private jwtDecoder : JwtDecoderService) 
+  constructor(
+    private jwtDecoder : JwtDecoderService,
+    private restService : RestService) 
     {
       if (localStorage.getItem('token')) {
         this.setSession({ token : localStorage.getItem('token')! });
@@ -25,55 +26,32 @@ export class AuthorizationService {
     *    Observable сильнее и гибче, чем Promise, не нужно оборачивать в Promise (без особой необходимости).
     * 2. Не критично. Тут можно (и так даже будет лучше) добавить сервис для работы с http запросами. Я добавлю пример RestService, чтобы было понятнее.
     * */
-    public login(login: string, password: string) {
-        return new Promise<boolean>((resolve, reject) => {
-            this.httpClient.post<IToken>(
-                this.BASE_URL + '/User/Login',
-                {login, password}
-            ).pipe(
-                catchError(err => {
-                    console.log(err);
-                    if (err.status === 403) {
-                        resolve(false); // возвращает false в случае ошибки 403
-                    }
-                    return throwError(err);
-                }),
-                map((authResult: IToken) => {
-                    this.setSession(authResult);
-                    return true; // возвращает true в случае успешной авторизации
-                })
-            ).subscribe((result) => {
-                resolve(result);
-            }, (error) => {
-                reject(error);
-            });
-        });
+    public login(model : LoginModel) {
+        return this.restService.restPOST<IToken>('/User/Login', model)
+        .pipe(
+            catchError(err => {
+                console.log(err);
+                return throwError(err);
+            }),
+            map((authResult: IToken) => {
+                this.setSession(authResult);
+                return true;
+            })
+        );
     }
 
     // Передавай сюда объект с определенным интерфейсом, а не 4 аргумента и так везде
-    public registration(login: string, password: string, passwordConfirm: string, email: string) {
-        return new Promise<boolean>((resolve, reject) => {
-            this.httpClient.post<IToken>(
-                this.BASE_URL + '/User/Register',
-                {login, email, password, passwordConfirm}
-            ).pipe(
-                catchError(err => {
-                    if (err.status === 403) {
-                        resolve(false); // возвращает false в случае ошибки 403
-                    }
-                    return throwError(err);
-                }),
-                map((authResult: IToken) => {
-                    this.setSession(authResult);
-                    return true; // возвращает true в случае успешной авторизации
-                })
-                // все подписки будут в компоненте, который использует этот сервис
-            ).subscribe((result) => {
-                resolve(result);
-            }, (error) => {
-                reject(error);
-            });
-        });
+    public registration(model : RegisterModel) {
+        return this.restService.restPOST<IToken>('/User/Register', model)
+        .pipe(
+            catchError(err => {
+                return throwError(err);
+            }),
+            map((authResult: IToken) => {
+                this.setSession(authResult);
+                return true; 
+            })
+        );
     }
 
     setSession(authResult: IToken) {

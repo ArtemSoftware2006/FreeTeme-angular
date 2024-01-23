@@ -26,10 +26,10 @@ export class UserProposalsPageComponent {
     });
 
     this.proposalService.getByUserId(this.user?.id as number)
-    .then((proposals : ProposalDetails[]) => {
+    .subscribe((proposals : ProposalDetails[]) => {
       this.proposals = proposals;
-    })
-    .catch((error) => {
+    },
+    (error) => {
       console.log(error);
     })
   }

@@ -40,11 +40,11 @@ export class ProposalPanelComponent {
     });
     
     this.proposalService.getByUserId(this.user?.id as number)
-    .then(result => {
+    .subscribe(result => {
       this.proposals = result;
       console.log(this.proposals);
-    })
-    .catch(error => {
+    }
+    ,error => {
       console.log(error);
     });
   }

@@ -7,6 +7,18 @@ export interface User {
     email : string;
 }
 
+export interface LoginModel {
+    login : string,
+    password : string
+}
+
+export interface RegisterModel {
+    login : string,
+    password : string,
+    passwordConfirm : string,
+    email : string
+}
+
 export interface UserProfile {
     login : string;
     firstName : string;

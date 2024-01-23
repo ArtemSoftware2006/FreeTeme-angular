@@ -33,13 +33,13 @@ export class DealsPageComponent {
 
   load() {
     this.dealService.getDeals(this.page, this.limit)
-    .then(result => {
-      this.deals = [...this.deals, ...result.deals];
-      if (result.total <= this.deals.length) {
+    .subscribe(result => {
+      this.deals = [...this.deals, ...result.deals as DealCard[]];
+      if (Number(result.total)  <= this.deals.length) {
         this.isLoadMoreDisabled = true;
       }
-    })
-    .catch(error => {
+    },
+    error => {
       console.log(error);
     })
   }

@@ -25,7 +25,7 @@ export class CategoryInputComponent {
 
   ngOnInit(): void {
     this.categoryService.getCategories()
-    .then(categories => {
+    .subscribe(categories => {
       this.categories = categories
 
       this.selectedCategories = this.categories.map(category => {
@@ -34,8 +34,10 @@ export class CategoryInputComponent {
         }
         return {...category, isSelected: false};
       });
+    },
+    error => {
+      console.log(error);
     })
-    .catch(err => console.log(err))
   }
 
   toggleSelection(category: SelectedCategory) {

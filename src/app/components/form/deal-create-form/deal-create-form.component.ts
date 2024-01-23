@@ -61,14 +61,14 @@ export class DealCreateFormComponent {
     };
 
     this.dealService.create(deal)
-    .then(result => {
+    .subscribe(result => {
       this.onSubmitEvent.emit(true);
       this.router.navigate(['/home']);
-    })
-    .catch(error => {
+    },
+    error => {
       this.onSubmitEvent.emit(false);
       console.log(error);
-    })
+    });
   }
 
   toggleCategory($event: SelectedCategory) {

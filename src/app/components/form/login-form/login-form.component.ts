@@ -29,12 +29,19 @@ export class LoginFormComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.controls["login"].value as string, 
-                            this.loginForm.controls["password"].value as string)
-      .then(() => {
+
+      const loginModel = {
+        login : this.loginForm.controls["login"].value as string,
+        password : this.loginForm.controls["password"].value as string
+      }
+
+      this.authService.login(loginModel)
+      .subscribe(result => {
         this.router.navigate(['/home']);
-      })
-      .catch(error => console.log(error))
+      },
+      error => {
+        console.log(error);
+      });
     }
   }
 }

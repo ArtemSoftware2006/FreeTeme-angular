@@ -30,17 +30,21 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.authService.registration(this.registerForm.controls["login"].value as string,
-        this.registerForm.controls["password"].value as string,
-        this.registerForm.controls["passwordConfirm"].value as string, 
-        this.registerForm.controls["email"].value as string)
-      .then(() => {
-        this.router.navigate(['/home']);
-      })
-      .catch(error => console.log(error))
+
+      const registerModel = {
+        login : this.registerForm.controls["login"].value as string,
+        password : this.registerForm.controls["password"].value as string,
+        passwordConfirm : this.registerForm.controls["passwordConfirm"].value as string,
+        email : this.registerForm.controls["email"].value as string
+      };
+
+      this.authService.registration(registerModel)
+      .subscribe(result => {
+          this.router.navigate(['/home']);
+        },
+        error => {
+          console.log(error);
+        });
     }
-  }
-  handleClick() {
-    console.log("Lol");
   }
 }
