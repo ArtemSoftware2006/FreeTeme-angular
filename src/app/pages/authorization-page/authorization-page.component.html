@@ -1,5 +1,10 @@
-
 <div class="authorization-page__wrapper">
+    <!--
+        1. нет смысла оборачивать компоненты в <ng-container> ты можешь использовать *ngIf на самом компоненте (это справедливо для всех тегов (div,span, p, app-..., etc))
+        2. В 17 ангуляре внедрили новый control workflow, если интересно - попробуй
+        он в разы удобнее выглядит
+        https://medium.com/@bhargavr445/angular-17-new-control-work-flow-if-else-if-else-and-for-6e8a1f369693
+    -->
     <ng-container *ngIf="isSignIn">
         <app-login-form></app-login-form>
     </ng-container>
@@ -7,12 +12,13 @@
         <app-registration-form></app-registration-form>
     </ng-container>
 
-    <app-primary-button 
+    <!-- Хорошее форматирование кода-->
+    <app-primary-button
         class="authorization-page__btn-switch"
-        type="button" 
-        name="btn-switch" 
-        id="btn-switch" 
-        text="{{isSignIn ? 'Registration' : 'Sign in'}}" 
+        type="button"
+        name="btn-switch"
+        id="btn-switch"
+        text="{{isSignIn ? 'Registration' : 'Sign in'}}"
         (clicked)="changeForm()"
     />
 </div>

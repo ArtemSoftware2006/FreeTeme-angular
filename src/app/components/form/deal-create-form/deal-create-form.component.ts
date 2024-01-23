@@ -20,7 +20,7 @@ import { SelectedCategory } from '../../../models/category';
 })
 export class DealCreateFormComponent {
   @Output() onSubmitEvent : EventEmitter<boolean> = new EventEmitter();
-  dealCreateForm! : FormGroup
+  dealCreateForm! : FormGroup // Добавь типизацию формы + не забывай ; в конце строк
   user? : User | null
   selectedCategories : number[] = [];
   constructor (public builder : FormBuilder,
@@ -29,6 +29,8 @@ export class DealCreateFormComponent {
     public router : Router) { }
 
   ngOnInit(): void {
+    // Если ты используешь для работы с формами FormBuilder, то используй его и для создания контролов, смешивать не стоит
+    // Можно вынести Validators.required, Validators.minLength(3), Validators.maxLength(255) в отдельные переменные и использовать их везде (например в данном случае это может быть appTextValidRules)
     this.dealCreateForm = this.builder.nonNullable.group({
       title : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       description : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(2000)]),
@@ -37,6 +39,7 @@ export class DealCreateFormComponent {
       location : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       date : new FormControl('', [Validators.required]),
     });
+
 
     this.authService.getUser().subscribe(user => {
       this.user = user
