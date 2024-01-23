@@ -16,7 +16,7 @@ import { ProfileEditFormComponent } from '../../components/form/profile-edit-for
 })
 export class ProfilePageComponent {
   isEditProfile = false;
-  profile? : UserProfile; 
+  profile? : UserProfile;
   user? : User;
   profileKeyValues? : any[]
   constructor(public userService : UserService,
@@ -30,19 +30,27 @@ export class ProfilePageComponent {
     if (this.user != null) {
       this.userService.getUser(this.user.id)
       .then((profile : UserProfile) => {
+        /*
+        * Лучше вот так
+        * this.profile = {
+          ...profile
+        };
+        *
+        * */
+
         this.profile = profile;
         this.profileKeyValues = Object.entries(this.profile);
-      }) 
+      })
       .catch((err) => {
         console.log(err);
       })
-    }    
+    }
   }
   setIsEditProfile(mode: boolean) {
     this.isEditProfile = mode;
   }
 
-  onProfileEdit($event: UserUpdateProfile | null) {    
+  onProfileEdit($event: UserUpdateProfile | null) {
     if ($event) {
       this.profile = {
         login : this.profile?.login as string,

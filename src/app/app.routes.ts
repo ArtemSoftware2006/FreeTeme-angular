@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path: '', component: HomePageComponent},
     {path: 'home', component: HomePageComponent},
     {path: 'authorization', component: AuthorizationPageComponent},
-    {path: "profile", component: ProfilePageComponent},
+    {path: "profile", component: ProfilePageComponent}, // Старайся использовать одинаковый вид кавычек
     {path: "executors", component: ExecutorsPageComponent},
     {path: "deals", component: DealsPageComponent},
     {path: "about", component: AboutPageComponent},

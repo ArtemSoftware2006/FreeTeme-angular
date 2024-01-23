@@ -1,0 +1,663 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "^17.0.0",
+    "@angular/cdk": "^17.0.5",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/material": "^17.0.5",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "jwt-decode": "^4.0.0",
+    "normalize.css": "^8.0.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "^17.0.5",
+    "@angular/cli": "^17.0.5",
+    "@angular/compiler-cli": "^17.0.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.2.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "5507903580143387249"
+      },
+      {
+        "file": "Analize.md",
+        "hash": "8737888987509814213"
+      },
+      {
+        "file": "README.md",
+        "hash": "13475492780519103259"
+      },
+      {
+        "file": "angular.json",
+        "hash": "2552354409560003505"
+      },
+      {
+        "file": "feedback.md",
+        "hash": "10881805583981203180"
+      },
+      {
+        "file": "img.png",
+        "hash": "17262274821634450845"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "16950686029160220392"
+      },
+      {
+        "file": "package.json",
+        "hash": "8405288936970092092"
+      },
+      {
+        "file": "server/docker-compose.yml",
+        "hash": "3224529936883899572"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "14723413120724867088"
+      },
+      {
+        "file": "src/app/app.component.scss",
+        "hash": "3329129926919991237"
+      },
+      {
+        "file": "src/app/app.component.spec.ts",
+        "hash": "12075105412227542510"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "6848340344954239059"
+      },
+      {
+        "file": "src/app/app.config.ts",
+        "hash": "10868959871749978124"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "9500157379807545744"
+      },
+      {
+        "file": "src/app/components/UI/button/primary-button/primary-button.component.html",
+        "hash": "11599285572943739628"
+      },
+      {
+        "file": "src/app/components/UI/button/primary-button/primary-button.component.scss",
+        "hash": "14061172030011110840"
+      },
+      {
+        "file": "src/app/components/UI/button/primary-button/primary-button.component.spec.ts",
+        "hash": "11886568948063996705"
+      },
+      {
+        "file": "src/app/components/UI/button/primary-button/primary-button.component.ts",
+        "hash": "5409857923138654402"
+      },
+      {
+        "file": "src/app/components/UI/button/switcher/switcher.component.html",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/UI/button/switcher/switcher.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/UI/button/switcher/switcher.component.spec.ts",
+        "hash": "7735047919122401669"
+      },
+      {
+        "file": "src/app/components/UI/button/switcher/switcher.component.ts",
+        "hash": "3309834834683881110"
+      },
+      {
+        "file": "src/app/components/UI/input/category-input/category-input.component.html",
+        "hash": "8850714582347511834"
+      },
+      {
+        "file": "src/app/components/UI/input/category-input/category-input.component.scss",
+        "hash": "7971678319133783578"
+      },
+      {
+        "file": "src/app/components/UI/input/category-input/category-input.component.spec.ts",
+        "hash": "10871360664490422385"
+      },
+      {
+        "file": "src/app/components/UI/input/category-input/category-input.component.ts",
+        "hash": "17305543846631565176"
+      },
+      {
+        "file": "src/app/components/UI/input/form-input/form-input.component.html",
+        "hash": "9930404806285372243"
+      },
+      {
+        "file": "src/app/components/UI/input/form-input/form-input.component.scss",
+        "hash": "11134499561653202038"
+      },
+      {
+        "file": "src/app/components/UI/input/form-input/form-input.component.spec.ts",
+        "hash": "13025029797631250656"
+      },
+      {
+        "file": "src/app/components/UI/input/form-input/form-input.component.ts",
+        "hash": "1011090795247590173"
+      },
+      {
+        "file": "src/app/components/UI/link/circle-link/circle-link.component.html",
+        "hash": "7885931720261777294"
+      },
+      {
+        "file": "src/app/components/UI/link/circle-link/circle-link.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/UI/link/circle-link/circle-link.component.spec.ts",
+        "hash": "839440790212127318"
+      },
+      {
+        "file": "src/app/components/UI/link/circle-link/circle-link.component.ts",
+        "hash": "191624483075799151"
+      },
+      {
+        "file": "src/app/components/UI/link/link.component.html",
+        "hash": "9850760653391999644"
+      },
+      {
+        "file": "src/app/components/UI/link/link.component.scss",
+        "hash": "17563514822969815513"
+      },
+      {
+        "file": "src/app/components/UI/link/link.component.spec.ts",
+        "hash": "11408685175397849285"
+      },
+      {
+        "file": "src/app/components/UI/link/link.component.ts",
+        "hash": "1272701862323361201"
+      },
+      {
+        "file": "src/app/components/deal-card/deal-card.component.html",
+        "hash": "3937409201550784923"
+      },
+      {
+        "file": "src/app/components/deal-card/deal-card.component.scss",
+        "hash": "3940890556177369959"
+      },
+      {
+        "file": "src/app/components/deal-card/deal-card.component.spec.ts",
+        "hash": "3809011968543802263"
+      },
+      {
+        "file": "src/app/components/deal-card/deal-card.component.ts",
+        "hash": "6252022489635293329"
+      },
+      {
+        "file": "src/app/components/form/deal-create-form/deal-create-form.component.html",
+        "hash": "6236780736662980486"
+      },
+      {
+        "file": "src/app/components/form/deal-create-form/deal-create-form.component.scss",
+        "hash": "5426426253584870357"
+      },
+      {
+        "file": "src/app/components/form/deal-create-form/deal-create-form.component.spec.ts",
+        "hash": "7887292931147029502"
+      },
+      {
+        "file": "src/app/components/form/deal-create-form/deal-create-form.component.ts",
+        "hash": "8423467354757184543"
+      },
+      {
+        "file": "src/app/components/form/login-form/login-form.component.html",
+        "hash": "14449811308109727629"
+      },
+      {
+        "file": "src/app/components/form/login-form/login-form.component.scss",
+        "hash": "14525385497620707880"
+      },
+      {
+        "file": "src/app/components/form/login-form/login-form.component.spec.ts",
+        "hash": "14516308023204968816"
+      },
+      {
+        "file": "src/app/components/form/login-form/login-form.component.ts",
+        "hash": "1310826341413605947"
+      },
+      {
+        "file": "src/app/components/form/profile-edit-form/profile-edit-form.component.html",
+        "hash": "16481838941195866636"
+      },
+      {
+        "file": "src/app/components/form/profile-edit-form/profile-edit-form.component.scss",
+        "hash": "17583898385380688183"
+      },
+      {
+        "file": "src/app/components/form/profile-edit-form/profile-edit-form.component.spec.ts",
+        "hash": "14490448030755238417"
+      },
+      {
+        "file": "src/app/components/form/profile-edit-form/profile-edit-form.component.ts",
+        "hash": "13425988474208361347"
+      },
+      {
+        "file": "src/app/components/form/proposal-creaete-form/proposal-creaete-form.component.html",
+        "hash": "18014440482966775939"
+      },
+      {
+        "file": "src/app/components/form/proposal-creaete-form/proposal-creaete-form.component.scss",
+        "hash": "17325839755021638882"
+      },
+      {
+        "file": "src/app/components/form/proposal-creaete-form/proposal-creaete-form.component.spec.ts",
+        "hash": "4501886077925641615"
+      },
+      {
+        "file": "src/app/components/form/proposal-creaete-form/proposal-creaete-form.component.ts",
+        "hash": "12823028593095919759"
+      },
+      {
+        "file": "src/app/components/form/registration-form/registration-form.component.html",
+        "hash": "7589398123288487417"
+      },
+      {
+        "file": "src/app/components/form/registration-form/registration-form.component.scss",
+        "hash": "3706798470098310320"
+      },
+      {
+        "file": "src/app/components/form/registration-form/registration-form.component.spec.ts",
+        "hash": "17787648856469614219"
+      },
+      {
+        "file": "src/app/components/form/registration-form/registration-form.component.ts",
+        "hash": "6165797593440023918"
+      },
+      {
+        "file": "src/app/components/main-footer/main-footer.component.html",
+        "hash": "5300866062871665825"
+      },
+      {
+        "file": "src/app/components/main-footer/main-footer.component.scss",
+        "hash": "12860219521128838290"
+      },
+      {
+        "file": "src/app/components/main-footer/main-footer.component.spec.ts",
+        "hash": "11364973907498781550"
+      },
+      {
+        "file": "src/app/components/main-footer/main-footer.component.ts",
+        "hash": "9411118778980483914"
+      },
+      {
+        "file": "src/app/components/main-header/main-header.component.html",
+        "hash": "15097661699875126833"
+      },
+      {
+        "file": "src/app/components/main-header/main-header.component.scss",
+        "hash": "17345021093462098269"
+      },
+      {
+        "file": "src/app/components/main-header/main-header.component.spec.ts",
+        "hash": "3098336874775880286"
+      },
+      {
+        "file": "src/app/components/main-header/main-header.component.ts",
+        "hash": "4914406069512162606"
+      },
+      {
+        "file": "src/app/components/profile-card/profile-card.component.html",
+        "hash": "8854666897646384823"
+      },
+      {
+        "file": "src/app/components/profile-card/profile-card.component.scss",
+        "hash": "16266701341218794783"
+      },
+      {
+        "file": "src/app/components/profile-card/profile-card.component.spec.ts",
+        "hash": "5739994342517581748"
+      },
+      {
+        "file": "src/app/components/profile-card/profile-card.component.ts",
+        "hash": "4246470937095976712"
+      },
+      {
+        "file": "src/app/components/profile-field/profile-field.component.html",
+        "hash": "13311578341818529272"
+      },
+      {
+        "file": "src/app/components/profile-field/profile-field.component.scss",
+        "hash": "9142756233641618549"
+      },
+      {
+        "file": "src/app/components/profile-field/profile-field.component.spec.ts",
+        "hash": "2235834081314941654"
+      },
+      {
+        "file": "src/app/components/profile-field/profile-field.component.ts",
+        "hash": "11042538312312985962"
+      },
+      {
+        "file": "src/app/components/profile/profile.component.html",
+        "hash": "323075531794043740"
+      },
+      {
+        "file": "src/app/components/profile/profile.component.scss",
+        "hash": "13727534453479332947"
+      },
+      {
+        "file": "src/app/components/profile/profile.component.spec.ts",
+        "hash": "14382940418991061375"
+      },
+      {
+        "file": "src/app/components/profile/profile.component.ts",
+        "hash": "16666653763957711853"
+      },
+      {
+        "file": "src/app/components/user-card/user-card.component.html",
+        "hash": "16634586134097840961"
+      },
+      {
+        "file": "src/app/components/user-card/user-card.component.scss",
+        "hash": "17279639293663059209"
+      },
+      {
+        "file": "src/app/components/user-card/user-card.component.spec.ts",
+        "hash": "17280753810685848019"
+      },
+      {
+        "file": "src/app/components/user-card/user-card.component.ts",
+        "hash": "3844618112882232766"
+      },
+      {
+        "file": "src/app/models/category.ts",
+        "hash": "3372682987064294531"
+      },
+      {
+        "file": "src/app/models/deal.ts",
+        "hash": "8195864185248135078"
+      },
+      {
+        "file": "src/app/models/httpResult.ts",
+        "hash": "13916997136245044305"
+      },
+      {
+        "file": "src/app/models/proposal.ts",
+        "hash": "3933912117782773472"
+      },
+      {
+        "file": "src/app/models/token.ts",
+        "hash": "18330701769068571231"
+      },
+      {
+        "file": "src/app/models/user.ts",
+        "hash": "1136318608967751955"
+      },
+      {
+        "file": "src/app/pages/about-page/about-page.component.html",
+        "hash": "15381363478925323400"
+      },
+      {
+        "file": "src/app/pages/about-page/about-page.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/about-page/about-page.component.spec.ts",
+        "hash": "15354948049990118963"
+      },
+      {
+        "file": "src/app/pages/about-page/about-page.component.ts",
+        "hash": "6162145026599922790"
+      },
+      {
+        "file": "src/app/pages/authorization-page/authorization-page.component.html",
+        "hash": "9667192921182681948"
+      },
+      {
+        "file": "src/app/pages/authorization-page/authorization-page.component.scss",
+        "hash": "12549101502302692571"
+      },
+      {
+        "file": "src/app/pages/authorization-page/authorization-page.component.spec.ts",
+        "hash": "3046502554809740168"
+      },
+      {
+        "file": "src/app/pages/authorization-page/authorization-page.component.ts",
+        "hash": "7207018229650816417"
+      },
+      {
+        "file": "src/app/pages/deal-create-page/deal-create-page.component.html",
+        "hash": "11307281245480790200"
+      },
+      {
+        "file": "src/app/pages/deal-create-page/deal-create-page.component.scss",
+        "hash": "7169483690978774071"
+      },
+      {
+        "file": "src/app/pages/deal-create-page/deal-create-page.component.spec.ts",
+        "hash": "14148427237163233251"
+      },
+      {
+        "file": "src/app/pages/deal-create-page/deal-create-page.component.ts",
+        "hash": "3316675836543504279"
+      },
+      {
+        "file": "src/app/pages/deal-details-page/deal-details-page.component.html",
+        "hash": "9791290857667825810"
+      },
+      {
+        "file": "src/app/pages/deal-details-page/deal-details-page.component.scss",
+        "hash": "4707254845890302017"
+      },
+      {
+        "file": "src/app/pages/deal-details-page/deal-details-page.component.spec.ts",
+        "hash": "4628694010490688769"
+      },
+      {
+        "file": "src/app/pages/deal-details-page/deal-details-page.component.ts",
+        "hash": "11908917933127813017"
+      },
+      {
+        "file": "src/app/pages/deals-page/deals-page.component.html",
+        "hash": "11687463306863003631"
+      },
+      {
+        "file": "src/app/pages/deals-page/deals-page.component.scss",
+        "hash": "13198123685318029830"
+      },
+      {
+        "file": "src/app/pages/deals-page/deals-page.component.spec.ts",
+        "hash": "13728168768083363538"
+      },
+      {
+        "file": "src/app/pages/deals-page/deals-page.component.ts",
+        "hash": "9860715739878806980"
+      },
+      {
+        "file": "src/app/pages/error-page/error-page.component.html",
+        "hash": "15643404103182045335"
+      },
+      {
+        "file": "src/app/pages/error-page/error-page.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/error-page/error-page.component.spec.ts",
+        "hash": "6254344571118980047"
+      },
+      {
+        "file": "src/app/pages/error-page/error-page.component.ts",
+        "hash": "10214509350109921030"
+      },
+      {
+        "file": "src/app/pages/executors-page/executors-page.component.html",
+        "hash": "2241578940674123172"
+      },
+      {
+        "file": "src/app/pages/executors-page/executors-page.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/executors-page/executors-page.component.spec.ts",
+        "hash": "6233725276125222741"
+      },
+      {
+        "file": "src/app/pages/executors-page/executors-page.component.ts",
+        "hash": "3763090568401780998"
+      },
+      {
+        "file": "src/app/pages/home-page/home-page.component.html",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/home-page/home-page.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/pages/home-page/home-page.component.spec.ts",
+        "hash": "8248513240540082298"
+      },
+      {
+        "file": "src/app/pages/home-page/home-page.component.ts",
+        "hash": "5732888065259994559"
+      },
+      {
+        "file": "src/app/pages/profile-page/profile-page.component.html",
+        "hash": "14651011517120414969"
+      },
+      {
+        "file": "src/app/pages/profile-page/profile-page.component.scss",
+        "hash": "11810074077778183056"
+      },
+      {
+        "file": "src/app/pages/profile-page/profile-page.component.spec.ts",
+        "hash": "2168988538375316736"
+      },
+      {
+        "file": "src/app/pages/profile-page/profile-page.component.ts",
+        "hash": "3625251908910110712"
+      },
+      {
+        "file": "src/app/services/authorization/authorization.service.spec.ts",
+        "hash": "10075215780200304164"
+      },
+      {
+        "file": "src/app/services/authorization/authorization.service.ts",
+        "hash": "15488188370034357197"
+      },
+      {
+        "file": "src/app/services/category/category.service.spec.ts",
+        "hash": "12647900168126196293"
+      },
+      {
+        "file": "src/app/services/category/category.service.ts",
+        "hash": "15246733345429784655"
+      },
+      {
+        "file": "src/app/services/deal/deal.service.spec.ts",
+        "hash": "2657688627595376013"
+      },
+      {
+        "file": "src/app/services/deal/deal.service.ts",
+        "hash": "918236336272465091"
+      },
+      {
+        "file": "src/app/services/interceptors/authorization-interceptor.service.spec.ts",
+        "hash": "1663862391043729061"
+      },
+      {
+        "file": "src/app/services/interceptors/authorization-interceptor.service.ts",
+        "hash": "14049947566148667028"
+      },
+      {
+        "file": "src/app/services/jwt-decoder/jwt-decoder.service.spec.ts",
+        "hash": "17112963511463290900"
+      },
+      {
+        "file": "src/app/services/jwt-decoder/jwt-decoder.service.ts",
+        "hash": "4221460504884274760"
+      },
+      {
+        "file": "src/app/services/proposal/proposal.service.spec.ts",
+        "hash": "5746088849901348781"
+      },
+      {
+        "file": "src/app/services/proposal/proposal.service.ts",
+        "hash": "16229027767584091379"
+      },
+      {
+        "file": "src/app/services/rest.service.ts",
+        "hash": "17179851060131093337"
+      },
+      {
+        "file": "src/app/services/user/user.service.spec.ts",
+        "hash": "5664179134821074798"
+      },
+      {
+        "file": "src/app/services/user/user.service.ts",
+        "hash": "11149674495075320192"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/user.svg",
+        "hash": "17193104479491356887"
+      },
+      {
+        "file": "src/assets/vk-with-circle-svgrepo-com.svg",
+        "hash": "1526544092887988722"
+      },
+      {
+        "file": "src/assets/warning.svg",
+        "hash": "4259693282743987627"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "13649514597283607644"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "4927504514031276065"
+      },
+      {
+        "file": "src/shared/variables.scss",
+        "hash": "9097675284038961351"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "3311352223869114989"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "8074232012119176151"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
+      }
+    ]
+  }
+}
