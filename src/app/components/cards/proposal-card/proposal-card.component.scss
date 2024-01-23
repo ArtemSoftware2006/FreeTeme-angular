@@ -1,0 +1,26 @@
+@import "../../../../shared/variables.scss";
+
+.proposal-card {
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid $color-primary;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    &__header {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        color: $color-primary;
+        font-size: $font-size-1;
+        font-weight: bold;
+    }
+}
