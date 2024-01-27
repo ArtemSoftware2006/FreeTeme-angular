@@ -1,23 +1,36 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { AuthorizationService } from '../authorization/authorization.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationInterceptorService implements HttpInterceptor {
 
-  constructor() { }
+  constructor(private authService: AuthorizationService,
+    private router : Router ) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
 
+    let request = req;
     if (token) {
-      const cloned = req.clone({
+      request = req.clone({
         headers : req.headers.set('Authorization', 'Bearer ' + token)
       });
-      return next.handle(cloned);
     }
 
-    return next.handle(req);
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          // Вызовите метод logout из вашего сервиса
+          this.router.navigate(['/login']);
+          this.authService.logout();
+        }
+        return throwError(error);
+      })
+    );
   }
 }

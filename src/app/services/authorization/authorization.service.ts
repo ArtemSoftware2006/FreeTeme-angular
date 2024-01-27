@@ -64,4 +64,9 @@ export class AuthorizationService {
     getUser() {
         return this.user;
     }
+
+    logout() {
+        this.user.next(null);
+        localStorage.clear();
+    }
 }

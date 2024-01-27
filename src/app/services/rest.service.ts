@@ -26,10 +26,11 @@ export class RestService {
         options);
     }
 
-    public restPOST<T>(endpoint: string, body: object | null = null): Observable<T> {
+    public restPOST<T>(endpoint: string, body: object | null = null,  options : HttpOptions = {}): Observable<T> {
         return this.request('POST', this.BASE_URL + endpoint, {
             body : {...body}
-        });
+        }, 
+        options);
     }
 
     public restPUT<T>(endpoint: string, body: object | null = null): Observable<T> {
@@ -43,13 +44,11 @@ export class RestService {
         const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
         const httpOptions: HttpOptions = {
-            ...options,
             ...body,
-            headers : headers,
+            ...options,
+            headers : options.headers ? options.headers : headers,
             context : context,
         };
-
-        console.log(httpOptions);
 
         return this._http.request(method, endpoint, httpOptions);
     }
