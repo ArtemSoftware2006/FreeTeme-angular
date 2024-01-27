@@ -1,30 +1,34 @@
 import { Category } from "./category"
+import { UserCard } from "./user"
 
 export interface Deal {
     id : number,
-    // В нескольких интерфейсах повторяется набор полей, как вариант - вынести в отдельный интерфейс
-    // и наследовать от него. Так, в случае изменения, изменится только один интерфейс, а не несколько
     title : string,
-    description : string,
-    minPrice : number,
-    maxPrice : number,
-    location : string,
-    approximateDate : Date
-} 
-
-export interface DealCard {
-    id : number,
-    title : string,
-    views :  number,
     description : string,
     minPrice : number,
     maxPrice : number,
     location : string,
     approximateDate : Date,
+    status : number
+} 
+
+export interface DealCard extends Deal{
+    views : number,
+    alreadyResponded : boolean,
     datePublication: Date,
     categories: Category[],
     creatorUserId: number
 }
+
+export interface DealDetails extends Deal {
+    alreadyResponded : boolean,
+    views :  number,
+    datePublication : Date,
+    status : number,
+    categories : Category[],
+    creatorUser : UserCard
+}
+
 
 export interface DealCreate {
     title : string,
@@ -37,23 +41,10 @@ export interface DealCreate {
     categoryIds : number[]
 }
 
-export interface DealDetails {
-    id : number,
-    views :  number,
-    title : string,
-    description : string,
-    datePublication : Date,
-    minPrice : number,
-    maxPrice : number,
-    approximateDate : Date,
-    location : string,
-    status : number,
-    categories : Category[],
-    creatorUser : any
-}
-
 export function convertToDealCard(dealDetails: DealDetails[]): DealCard[] {
     return dealDetails.map(detail => ({
+        status : detail.status,
+        alreadyResponded : detail.alreadyResponded,
         id: detail.id,
         title: detail.title,
         views : detail.views,
