@@ -1,6 +1,6 @@
 <div class="deal-details-page__wrapper">
     <div class="deal-details-page__user">
-        <app-user-card></app-user-card>
+        <app-user-card [userSubject]="userCreator"></app-user-card>
     </div>
 
     <div class="deal-details-page__content">
@@ -8,22 +8,30 @@
             <mat-card-header>
                 <mat-card-title>{{ deal?.title }}</mat-card-title>
                 <mat-card-subtitle>Price : {{ deal?.minPrice }} - {{deal?.maxPrice}}</mat-card-subtitle>
-                <mat-card-subtitle>Published: {{ deal?.datePublication }}</mat-card-subtitle>
+                <mat-card-subtitle>Published: {{deal?.datePublication }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <p class="deal-details-page__description">{{ deal?.description }}</p>
-                <p>Приблизительная дата: {{ deal?.approximateDate }}</p>
+                <p class="deal-details-page__description">{{ deal?.approximateDate }}</p>
+                <p>Приблизительная дата: {{ deal ?.approximateDate }}</p>
             </mat-card-content>
             <mat-card-footer>
             @if (user) {
-                <button 
-                    mat-raised-button 
-                    [hidden]="isRespondBtnDisabled"
-                    color="primary"
-                    (click)="respondDeal()"
-                >
-                    respond
-                </button>
+                @if( deal?.alreadyResponded ) {
+                    <img src="../../../assets/warning.svg" alt="WARNING">
+                    <div>You already responded!</div>
+                }
+                @else {
+                    @if( user.id !== deal?.creatorUser?.id) {
+                        <button 
+                            mat-raised-button 
+                            [hidden]="isRespondBtnDisabled"
+                            color="primary"
+                            (click)="respondDeal()"
+                        >
+                            respond
+                        </button>
+                    }
+                }
             }
             @else {
                 <img src="../../../assets/warning.svg" alt="WARNING">

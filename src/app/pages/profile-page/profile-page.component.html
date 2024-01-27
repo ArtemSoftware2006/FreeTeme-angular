@@ -19,14 +19,7 @@
         <div class="profile-page__content-fields" *ngFor="let field of profileKeyValues">
           @if (field[0] === 'categories') 
           {
-            <mat-chip-listbox >  
-                <mat-chip-option 
-                    *ngFor="let category of field[1]"
-                    selectable="false" 
-                >
-                    {{category.name}}
-                </mat-chip-option>
-            </mat-chip-listbox>
+            <app-categories-panel [categories]="field[1]"></app-categories-panel>
           }
           @else {
             <app-profile-field label="{{field[0]}}" value="{{field[1]}}"></app-profile-field>

@@ -10,10 +10,13 @@ import { ProfileEditFormComponent } from '../../components/form/profile-edit-for
 import { MatChipsModule } from '@angular/material/chips';
 import { ProposalPanelComponent } from '../../components/proposal-panel/proposal-panel.component';
 import { DealPanelComponent } from '../../components/deal-panel/deal-panel.component';
+import { CategoriesPanelComponent } from '../../components/UI/chips/categories-panel/categories-panel.component';
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [ProfileCardComponent, ProfileFieldComponent, ProfileEditFormComponent, ProposalPanelComponent, DealPanelComponent,
+  imports: [ProfileCardComponent, ProfileFieldComponent, 
+       ProfileEditFormComponent, ProposalPanelComponent, DealPanelComponent,
+       CategoriesPanelComponent,
        MatChipsModule, MatButtonModule, 
        NgFor, NgIf],
   templateUrl: './profile-page.component.html',

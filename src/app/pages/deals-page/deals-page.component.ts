@@ -5,6 +5,8 @@ import { DealCard, DealDetails, convertToDealCard } from '../../models/deal';
 import { NgFor } from '@angular/common';
 import { PrimaryButtonComponent } from '../../components/UI/button/primary-button/primary-button.component';
 import { SearchToolComponent } from '../../components/search-tool/search-tool.component';
+import { User } from '../../models/user';
+import { AuthorizationService } from '../../services/authorization/authorization.service';
 
 @Component({
   selector: 'app-deals-page',
@@ -16,13 +18,18 @@ import { SearchToolComponent } from '../../components/search-tool/search-tool.co
 export class DealsPageComponent {
 
   deals: DealCard[] = [];
+  user? : User;
   page : number = 1;
   limit : number = 5;
   isLoadMoreDisabled : boolean = false;
 
-  constructor(public dealService : DealService) { }
+  constructor(public dealService : DealService,
+    public authService : AuthorizationService) { }
 
   ngOnInit(): void {
+    this.authService.getUser().subscribe(user => {
+      this.user = user as User;
+    })
     this.load();
   }
 
@@ -32,10 +39,10 @@ export class DealsPageComponent {
   }
 
   load() {
-    this.dealService.getDeals(this.page, this.limit)
+    this.dealService.getDeals(this.page, this.limit, this.user?.id as number)
     .subscribe(result => {
       this.deals = [...this.deals, ...result.deals as DealCard[]];
-      if (Number(result.total)  <= this.deals.length) {
+      if (Number(result.total)  <= this.deals.length || this.deals.length != this.page * this.limit) {
         this.isLoadMoreDisabled = true;
       }
     },
@@ -53,7 +60,7 @@ export class DealsPageComponent {
     this.isLoadMoreDisabled = false;
     this.page = 1;
 
-    this.dealService.getDeals(this.page, this.limit)
+    this.dealService.getDeals(this.page, this.limit, this.user?.id as number)
     .subscribe(result => {
       this.deals = result.deals as DealCard[];
     },
