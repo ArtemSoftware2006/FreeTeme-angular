@@ -1,0 +1,78 @@
+@import "../../../shared/variables.scss";
+
+.section {
+    height: 100vh;
+}
+
+.home-page {
+
+    &__wrapper {
+        
+    }
+
+    &__description {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../assets/Фон\ главной\ страницы.jpg");
+
+        &-content {
+            position: relative;
+            top: 300px;
+            left: 181px;
+            max-width: 520px;
+            letter-spacing: 2px;
+            line-height: 1.5;
+            font-size: 32px;
+        }
+    }
+
+    &__title {
+        color: $color-primary;
+        font-size: 32px;
+        font-weight: bold;
+    }
+}
+
+.create-deal-section {
+
+    &__wrapper {
+        position: relative;
+        top: 135px;
+        left: 0px;
+    }
+
+    &__title {
+        text-align: center;
+        color: $color-primary;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    &__content {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content:space-around;
+    }
+
+    &__col {
+        letter-spacing: 2px;
+        font-size: $font-size-1;
+        padding: 10px 60px;
+    }
+
+    &__btn {
+        display: flex;
+        margin: 30px 0;
+        justify-content: center;
+    }
+
+    &__footer {
+        padding: 20px;
+        letter-spacing: 2px;
+        font-size: $font-size-1;
+        text-align: center;
+        margin-top: 45px;
+    }
+}
