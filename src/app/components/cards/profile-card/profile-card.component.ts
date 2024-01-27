@@ -50,7 +50,7 @@ export class ProfileCardComponent {
   }
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   upload($event: Event) {

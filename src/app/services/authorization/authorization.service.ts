@@ -54,11 +54,11 @@ export class AuthorizationService {
     }
 
     setSession(authResult: IToken) {
+        localStorage.setItem('token', authResult.token);
+        
         const user = this.jwtDecoder.parse(authResult.token);
 
         this.user.next(user);
-
-        localStorage.setItem('token', authResult.token);
     }
 
     getUser() {
