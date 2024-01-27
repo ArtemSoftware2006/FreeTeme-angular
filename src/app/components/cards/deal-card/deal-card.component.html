@@ -1,15 +1,17 @@
-<div class="deal-card__wrapper">
+<div class="deal-card__wrapper" [ngClass]="{'deal-card_responded': dealCard?.alreadyResponded}">
     <div class="deal-card_tags">
-        <mat-chip-listbox >  
-            <mat-chip-option 
-                *ngFor="let category of dealCard?.categories"
-                selectable="false" 
-            >
-                {{category.name}}
-            </mat-chip-option>
-        </mat-chip-listbox>
+       <app-categories-panel [categories]="dealCard?.categories"/>
     <div class="deal-card__head">
-        <div class="deal-card__title">{{dealCard?.title}}</div>
+        <div class="deal-card__title">
+            @if (dealCard?.status === 1) {
+                <mat-icon 
+                    svgIcon="ok-icon" 
+                    aria-hidden="false" 
+                    aria-label="Count new proposal"
+                ></mat-icon>
+            }
+            {{dealCard?.title}}
+        </div>
         <div class="deal-card__price"><span class="deal-card__price-text">Price : </span>{{dealCard?.minPrice}}-{{dealCard?.maxPrice}}</div>
     </div>
     <div class="deal-card__description">{{dealCard?.description}}</div>
@@ -20,7 +22,7 @@
         <button 
             mat-raised-button 
             class="deal-card__view-button" 
-            [routerLink]="['/deal-details', dealCard?.id]" 
+            (click)="onView()"
             color="primary"
         >
             View
@@ -28,4 +30,4 @@
     </div>
     <div class="deal-card__view">
     </div>
-</div> <!-- Забыл один div закрывающий-->
+</div> 

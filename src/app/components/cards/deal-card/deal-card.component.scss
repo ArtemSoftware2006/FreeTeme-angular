@@ -1,12 +1,17 @@
 @import "../../../../shared/variables.scss";
 
 .deal-card {
+
     &__wrapper {
         display: flex;
         flex-direction: column;
         padding: 8px;
         border: 2px solid $color-primary;
         border-radius: 1rem;
+    }
+
+    &_responded {
+        opacity: 0.5;
     }
 
     &__tags {
@@ -22,6 +27,7 @@
     }
 
     &__title {
+        color: $color-primary;
         margin-left: 10px;
         font-size: $font-size-1;
         font-weight: bold;

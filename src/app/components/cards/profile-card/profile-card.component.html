@@ -1,7 +1,30 @@
 <div class="profile-card__wrapper">
-    <ng-content #image class="profile-card__image">
-
-    </ng-content>
-    <div class="profile-card__login">{{login}}</div>
-    <div class="profile-card__email">{{email}}</div>
+    <img class="profile-card__avatar" [src]="imageUrl" alt="User Avatar">
+    <div class="profile-card__login">{{user?.login}}</div>
+    <div class="profile-card__email">{{user?.email}}</div>
+    <div class="profile-card__footer">
+        <button 
+            mat-raised-button
+            color="primary"
+            class="custom-file-upload"
+            (click)="fileInput.click()"
+        >
+            <input 
+                type="file" 
+                id="avatar" 
+                name="avatar" 
+                accept="image/png, image/jpeg" 
+                #fileInput
+                (change)="upload($event)" 
+                >
+            Загрузить
+        </button>
+        <button 
+            mat-raised-button 
+            color="primary"
+            (click)="logout()"
+        >
+            Logout
+        </button>
+    </div>
 </div>

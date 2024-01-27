@@ -1,6 +1,15 @@
 <div class="proposal-card__wrapper">
     <div class="proposal-card__header">
-        <h2 class="proposal-card__title">Отклик на Заказ : {{proposal?.dealId}}</h2>
+        <h2 class="proposal-card__title">
+            @if (proposal?.status === 1) {
+                <mat-icon 
+                    svgIcon="ok-icon" 
+                    aria-hidden="false" 
+                    aria-label="Count new proposal"
+                ></mat-icon>
+            }
+            Отклик на Заказ : {{proposal?.dealId}}
+        </h2>
         <div class="proposal-card__price">Price : {{proposal?.price}}</div>
     </div>
     <div class="proposal-card__content">
@@ -8,6 +17,23 @@
     </div>
     <div class="proposal-card__footet">
         <div class="proposal-card__date">Publish : {{proposal?.datePublish}}</div>
-        <button mat-raised-button color="primary">View</button>
+        @if(proposal?.status === 0) {
+            <button 
+                mat-raised-button 
+                color="primary"
+                (click)="approved()"
+            >
+                Approved
+            </button>
+        }
+        @else {
+            <button 
+                mat-raised-button 
+                color="accent"
+                (click)="toContact()"
+            >
+                To contact
+            </button>
+        }
     </div>
 </div>
