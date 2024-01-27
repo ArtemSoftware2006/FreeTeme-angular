@@ -30,4 +30,13 @@ export class ProposalService {
       })
     );
   }
+
+  public getByDealId(id : number) {
+    return this.restService.restGET<ProposalDetails[]>("/Proposal/GetByDealId", {id : id})
+    .pipe(
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
 }

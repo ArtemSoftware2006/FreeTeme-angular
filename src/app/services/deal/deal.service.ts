@@ -12,11 +12,12 @@ export class DealService {
 
   constructor(private restService: RestService) { }
 
-  public getDeals(page: number, limit: number) {
+  public getDeals(page: number, limit: number, userId : number) {
     return this.restService.restGET<HttpResponse<DealCard[]>>("/Deal/Deals",
       {
         limit: limit,
         page: page,
+        userId : userId
       },
       {        
         observe: 'response'
@@ -48,8 +49,8 @@ export class DealService {
       );
   }
 
-  public get(id: number) {
-    return this.restService.restGET<DealDetails>("/deal/get/" + id)
+  public get(id: number, userId : number) {
+    return this.restService.restGET<DealDetails>("/deal/get/" + id, {userId : userId})
       .pipe(
         catchError(err => {
           return throwError(err);
