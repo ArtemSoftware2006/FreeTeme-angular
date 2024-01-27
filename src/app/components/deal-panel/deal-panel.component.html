@@ -4,8 +4,13 @@
         <button mat-raised-button routerLink="/user-deals" color="primary">View</button>
     </div>
     <div class="deal-panel__new">
-        new
-        <mat-icon svgIcon="bell-icon" aria-hidden="false" aria-label="Count new deal"></mat-icon>
+        <mat-icon 
+            svgIcon="ok-icon" 
+            aria-hidden="false" 
+            aria-label="Count new deal"
+            matBadge="{{approvedDealsCount}}" 
+            matBadgeColor="warn"
+        ></mat-icon>
     </div>
     <div class="deal-panel__count">
         Total count : {{deals?.length}}

@@ -1,14 +1,17 @@
-<mat-card>
-    <mat-card-header>
-      @if (user?.avatar) {
-        <img mat-card-avatar src="{{ user?.avatar }}" alt="{{ user?.login }}">
-      }
-      @else {
-        <img mat-card-image src="../../../assets/user.svg" alt="{{user?.login}}">
-      }
-      <mat-card-title>{{ user?.login }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ user?.description }}</p>
-    </mat-card-content>
-  </mat-card>
+<mat-card class="user-card__wrapper">
+  <mat-card-header class="user-card__header">
+    <img 
+      class="user-card__avatar"
+      mat-card-avatar 
+      [src]="avatarUrl" 
+      alt="{{ user.login }}"
+    />
+    <mat-card-title class="user-card__title">{{ user.login }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="user-card__content">
+    <p>{{ user.description }}</p>
+  </mat-card-content>
+  <mat-card-footer class="user-card__footer">
+    <app-categories-panel [categories]="user.categories"/>
+  </mat-card-footer>
+</mat-card>

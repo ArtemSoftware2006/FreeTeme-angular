@@ -1,5 +1,28 @@
-mat-card-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+@import "../../../../shared/variables.scss";
+
+.user-card {
+    &__wrapper {
+        padding: 10px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__avatar {
+        margin: auto 0;
+    }
+
+    &__title {
+        font-size: $font-size-1;
+        font-weight: bold;
+        color: $color-primary;
+    }
+
+    &__content {
+        margin-bottom: 10px;
+    }
 }
