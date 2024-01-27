@@ -1,0 +1,34 @@
+<div class="user-deal-details-page__wrapper">
+    <div class="user-deal-details-page__user">
+        <button 
+            mat-raised-button
+            color="primary"
+            (click)="showProposals()"
+        >
+            Proposals
+        </button>
+        <button
+            mat-raised-button
+            color="accent"
+        >
+            Edit Deal
+        </button>
+    </div>
+
+    <div class="user-deal-details-page__content">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ deal?.title }}</mat-card-title>
+                <mat-card-subtitle>Price : {{ deal?.minPrice }} - {{deal?.maxPrice}}</mat-card-subtitle>
+                <mat-card-subtitle>Published: {{ deal?.datePublication }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="user-deal-details-page__description">{{ deal?.description }}</p>
+                <p>Приблизительная дата: {{ deal?.approximateDate }}</p>
+            </mat-card-content>
+        </mat-card>
+        <div class="user-deal-details-page__proposal">
+            
+        </div>
+    </div>
+</div>

@@ -3,13 +3,14 @@ import { User } from '../../models/user';
 import { DealCard, DealDetails, convertToDealCard } from '../../models/deal';
 import { AuthorizationService } from '../../services/authorization/authorization.service';
 import { DealService } from '../../services/deal/deal.service';
-import { DealCardComponent } from '../../components/cards/deal-card/deal-card.component';
 import { NgFor } from '@angular/common';
+import { SearchToolComponent } from '../../components/search-tool/search-tool.component';
+import { DealCardComponent } from '../../components/cards/deal-card/deal-card.component';
 
 @Component({
   selector: 'app-user-deals-page',
   standalone: true,
-  imports: [DealCardComponent, NgFor],
+  imports: [DealCardComponent, SearchToolComponent, NgFor],
   templateUrl: './user-deals-page.component.html',
   styleUrl: './user-deals-page.component.scss'
 })
@@ -21,6 +22,17 @@ export class UserDealsPageComponent {
     public dealService : DealService) { }
     
     ngOnInit(): void {
+      this.getByUserId();
+    } 
+
+    onSearch($event: DealDetails[]) {
+      this.deals = convertToDealCard($event);
+    }
+    onEmptySerch($event: boolean) {
+      this.getByUserId();
+    }
+
+    getByUserId() {
       this.authService.getUser().subscribe(user => {
         this.user = user as User;
       });
@@ -32,5 +44,5 @@ export class UserDealsPageComponent {
       error => {
         console.log(error);
       });
-    } 
+    }
 }

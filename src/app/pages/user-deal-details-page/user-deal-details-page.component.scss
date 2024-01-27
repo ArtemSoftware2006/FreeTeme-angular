@@ -1,0 +1,51 @@
+@import "../../../shared/variables.scss";
+
+.user-deal-details-page {
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    &__user {
+        
+    }
+
+    &__proposal {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__content {
+        grid-column: 2;
+    }
+
+    &__description {
+        margin-bottom: 10px;
+    }
+}
+
+mat-card {
+    padding: 10px;
+}
+
+mat-card-title {
+    font-size: $font-size-1;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+mat-card-header {
+    margin-bottom: 20px;
+}
+
+mat-card-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin: 10px 0px 0px 20px;
+}
+

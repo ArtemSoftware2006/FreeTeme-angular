@@ -1,4 +1,19 @@
-<app-deal-card *ngFor="let deal of deals"
-    [dealCard]="deal"
->
-</app-deal-card>
+
+<div class="user-deals-page__wrapper">
+
+    <div class="user-deals-page__sidebar">
+        <app-search-tool
+            (emptySearch)="onEmptySerch($event)"
+            (searched)="onSearch($event)"
+        ></app-search-tool>
+    </div>
+    <div class="user-deals-page__content">
+        <app-deal-card 
+            routeTo="user-deal-details/"
+            *ngFor="let deal of deals"
+            [dealCard]="deal"
+        >
+        </app-deal-card>
+    </div>
+
+</div>
