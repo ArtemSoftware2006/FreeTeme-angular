@@ -31,19 +31,19 @@ export class UserDealDetailsPageComponent {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    if (id != null) {
-      this.dealService.get(Number(id), this.user?.id as number)
-      .subscribe((deal : DealDetails) => {
-        this.deal = deal;
-        console.log(deal);
-      }, 
-      (error) => {
-        console.log(error);
-      })
-    }
-
     this.authService.getUser().subscribe(user => {
       this.user = user as User;
+
+      if (id != null) {
+        this.dealService.get(Number(id), this.user?.id as number)
+        .subscribe((deal : DealDetails) => {
+          this.deal = deal;
+          console.log(deal);
+        }, 
+        (error) => {
+          console.log(error);
+        })
+      }
     })
 
     this.onCreatedProposal.subscribe(result => {

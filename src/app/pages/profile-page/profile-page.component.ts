@@ -33,6 +33,7 @@ export class ProfilePageComponent {
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
       this.user = user as User;
+      console.log(this.user);
     })
 
     if (this.user != null) {
