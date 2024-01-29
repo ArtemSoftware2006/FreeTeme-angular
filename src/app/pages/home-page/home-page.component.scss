@@ -4,6 +4,13 @@
     height: 100vh;
 }
 
+@media screen and (max-width: 768px) {
+    .section {
+        height: 120vh;
+    }
+    
+}
+
 .home-page {
 
     &__wrapper {
@@ -13,7 +20,7 @@
     &__description {
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: url("../../../assets/Фон\ главной\ страницы.jpg");
+        background-image: url("../../../assets/main-page-backcolor.jpg");
 
         &-content {
             position: relative;
@@ -23,6 +30,18 @@
             letter-spacing: 2px;
             line-height: 1.5;
             font-size: 32px;
+        }
+
+        @media screen and (max-width: 768px) {
+            &-content {
+                position: relative;
+                top: 350px;
+                left: 150px;
+                max-width: 250px;
+                letter-spacing: 2px;
+                line-height: 1.5;
+                font-size: 24px;
+            }
         }
     }
 
@@ -52,6 +71,7 @@
         margin-top: 50px;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 20px;
         justify-content:space-around;
     }
@@ -60,6 +80,14 @@
         letter-spacing: 2px;
         font-size: $font-size-1;
         padding: 10px 60px;
+    }
+
+    @media screen and (max-width: 768px) {
+        &__col {
+            letter-spacing: 2px;
+            font-size: $font-size-2;
+            padding: 10px 60px;
+        }
     }
 
     &__btn {
@@ -74,5 +102,15 @@
         font-size: $font-size-1;
         text-align: center;
         margin-top: 45px;
+    }
+
+    @media screen and (max-width: 768px) {
+        &__footer {
+            padding: 20px;
+            letter-spacing: 2px;
+            font-size: $font-size-2;
+            text-align: center;
+            margin-top: 45px;
+        }
     }
 }
