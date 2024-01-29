@@ -1,0 +1,32 @@
+<div class="user-proposal-details-page__wrapper">
+    <div class="user-proposal-details-page__user">
+        <app-user-card [userSubject]="userSubject"></app-user-card>
+
+        <button 
+            class="user-proposal-details-page__approved-btn"
+            mat-raised-button 
+            color="primary"
+            (click)="approved()"
+        >
+            Approved
+        </button>
+    </div>
+    <div class="user-proposal-details-page__content">
+        <mat-card>
+            <mat-card-header>
+
+            </mat-card-header>
+            <mat-card-content class="user-proposal-details-page__card-content">
+                <p><span class="user-proposal-details-page__description">Description</span>
+                     : {{ proposal?.description }}
+                </p>
+                <p><span class="user-proposal-details-page__price">Price</span>
+                     : {{ proposal?.price }}
+                </p>
+            </mat-card-content>
+            <mat-card-footer>
+
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

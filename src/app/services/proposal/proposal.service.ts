@@ -19,6 +19,15 @@ export class ProposalService {
     ); 
   }
 
+  get(id: number) {
+    return this.restService.restGET<ProposalDetails>("/Proposal/Get/" + id)
+    .pipe(
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
+
   public getByUserId(id : number) {
     return this.restService.restGET<ProposalDetails[]>("/Proposal/GetByUserId",
     {
