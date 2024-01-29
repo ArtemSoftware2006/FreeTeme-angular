@@ -1,0 +1,46 @@
+@import "../../../../shared/variables.scss";
+
+.user-contact-card {
+    &__wrapper {
+        padding: 10px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__avatar {
+        margin: auto 0;
+    }
+
+    &__title {
+        color : $color-primary;
+        font-size: $font-size-1;
+        font-weight: bold;
+    }
+
+    &__phone {
+        margin-left: 10px;
+
+        color: $font-color-secondary;
+    }
+
+    &__email {
+        margin-left: 10px;
+        color: $font-color-secondary;
+    }
+
+    &__contact {
+        margin-bottom: 20px;
+    }
+
+    &__content {
+        margin-top: 20px;
+    }
+
+    &__footer {
+        margin-top: 20px ;
+    }
+}

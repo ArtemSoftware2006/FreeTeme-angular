@@ -1,0 +1,21 @@
+<mat-card class="user-contact-card__wrapper">
+    <mat-card-header class="user-contact-card__header">
+      <img 
+        class="user-contact-card__avatar"
+        mat-card-avatar 
+        [src]="avatarUrl" 
+        alt="{{ user }}"
+      />
+      <mat-card-title class="user-contact-card__title">{{ user.login }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="user-contact-card__content">
+      <div class="user-contact-card__contact">
+        <p><span class="user-contact-card__email">Email</span> : {{ user.email }}</p>
+        <p><span class="user-contact-card__phone">Phone</span> : {{ user.phoneNumber}}</p>
+      </div>
+      <p>{{ user.description }} </p>
+    </mat-card-content>
+    <mat-card-footer class="user-contact-card__footer">
+      <app-categories-panel [categories]="user.categories"/>
+    </mat-card-footer>
+  </mat-card>
