@@ -9,6 +9,17 @@
         padding: 8px;
     }
 
+    @media screen and (max-width: 768px) {
+        &__wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 20px;
+    
+            padding: 8px;
+        }
+    }
+
     &__sidebar {
         grid-area: 1 / 1 / 1 / 1;
     }
@@ -17,6 +28,6 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        grid-area: 1 / 2 / 1 / 3;
+        
     }
 }

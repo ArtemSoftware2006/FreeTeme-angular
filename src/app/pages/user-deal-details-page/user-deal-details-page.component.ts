@@ -38,7 +38,6 @@ export class UserDealDetailsPageComponent {
         this.dealService.get(Number(id), this.user?.id as number)
         .subscribe((deal : DealDetails) => {
           this.deal = deal;
-          console.log(deal);
         }, 
         (error) => {
           console.log(error);

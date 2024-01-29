@@ -39,6 +39,7 @@ export class UserDealsPageComponent {
 
       this.dealService.getByUserId(this.user?.id as number)
       .subscribe((deals : DealDetails[]) => {
+        deals = deals.sort((a, b) => (a.status < b.status) ? 1 : -1);
         this.deals = convertToDealCard(deals);
       }, 
       error => {
