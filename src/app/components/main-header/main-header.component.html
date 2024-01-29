@@ -1,5 +1,38 @@
 <header class="main-header">
-    <nav class="main-header__nav nav-panel">
+    @if (isSmallScreen) {   
+    <h2 class="nav-panel__title">FreeTeme</h2>
+
+    <button mat-button class="menu-button" (click)="toggleSidenav()">
+      <mat-icon>{{ isOpenMenu ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+
+    <mat-sidenav-container 
+      class="main-header__sidenav-container"
+      [ngClass]="{'main-header__sidenav-container_close': !isOpenMenu}"
+    >
+        <mat-sidenav 
+            #sidenav 
+            autoFocus="false" 
+            class="main-header__sidenav" 
+            mode="over"
+            [(opened)]="isOpenMenu" 
+        >
+          <app-link text="Home" routerLink="/home"></app-link>
+          <app-link text="Deals" routerLink="/deals"></app-link>
+          <app-link text="About" routerLink="/about"></app-link>
+          <div class="nav-panel__profile">
+              <app-profile></app-profile>
+          </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    }
+    @else {
+      <nav class="main-header__nav nav-panel">
         <h2 class="nav-panel__title">FreeTeme</h2>
         <app-link text="Home" routerLink="/home"/>
         <app-link text="Deals" routerLink="/deals"/>
@@ -9,4 +42,6 @@
             <app-profile></app-profile>
         </div>
     </nav>
+    }
+
 </header>

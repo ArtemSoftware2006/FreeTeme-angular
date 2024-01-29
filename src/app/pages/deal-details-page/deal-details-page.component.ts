@@ -45,7 +45,7 @@ export class DealDetailsPageComponent {
   
         this.dealObserve.subscribe((deal : DealDetails) => {
           this.userCreator.next(deal.creatorUser);
-          console.log(deal);
+
           this.deal = deal;
         },
         error => {

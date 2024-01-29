@@ -3,6 +3,38 @@
 .main-header {
     background-color: $color-primary;
     padding: 20px 50px;
+
+    &__sidenav-toggle {
+        margin-right: 24px;
+        min-width: 0;
+        padding: 0;
+        line-height: normal;
+    }
+
+    &__sidenav-container {
+        background-color: $color-primary;
+        min-height: 170px;
+
+        &_close {
+            display: none;
+            transition: 1s;
+        }
+    }
+
+    &__sidenav {
+        background-color: $color-primary;
+        width: 100%;
+
+        * {
+            font-size: $font-size-2;
+            display: block;
+            margin-top: 10px;
+        }
+
+        &:last-child {
+            justify-content: left;
+        }
+    }
 }
 
 .nav-panel {

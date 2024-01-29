@@ -9,6 +9,15 @@
         gap: 20px;
     }
 
+    @media screen and (max-width: 768px) {
+        &__wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 10px;
+            gap: 20px;
+        }
+    }
+
     &__user {
         
     }
@@ -20,7 +29,7 @@
     }
 
     &__content {
-        grid-column: 2;
+        
     }
 
     &__description {
