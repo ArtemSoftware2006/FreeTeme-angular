@@ -25,6 +25,7 @@ export class SearchToolComponent {
       distinctUntilChanged()
     ).subscribe(searchText => {
       this.dealService.getDelasByTitle(searchText).subscribe(deals => {
+        deals = deals.filter(deal => deal.status === 0);
         this.deals = deals;
         this.searched.emit(this.deals);
       });
