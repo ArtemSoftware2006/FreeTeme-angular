@@ -1,0 +1,11 @@
+@import "../../../shared/variables.scss";
+
+.proposals-on-deal-page {
+    &__no-proposals {
+        font-size: $font-size-1;
+        color: $color-primary;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+}

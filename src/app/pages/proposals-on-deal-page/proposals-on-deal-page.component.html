@@ -3,4 +3,8 @@
         *ngFor="let proposal of proposals"
         [proposal]="proposal"
     ></app-proposal-card>
+
+    @if (proposals?.length === 0) {
+        <div class="proposals-on-deal-page__no-proposals">No proposals!</div>
+    }
 </div>
