@@ -23,4 +23,10 @@
         font-size: $font-size-1;
         font-weight: bold;
     }
+
+    &__btns {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
 }

@@ -4,6 +4,7 @@ import { ProposalDetails } from '../../../models/proposal';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 const NEW_ICON =  `
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
@@ -23,7 +24,8 @@ export class ProposalCardComponent {
 
   constructor(public approvedService : ApprovedService,
     iconRegistry: MatIconRegistry, 
-    sanitizer: DomSanitizer) 
+    sanitizer: DomSanitizer,
+    public router : Router) 
     { 
       iconRegistry.addSvgIconLiteral('ok-icon', sanitizer.bypassSecurityTrustHtml(NEW_ICON));
     }
@@ -33,7 +35,7 @@ export class ProposalCardComponent {
       this.approvedService.approved(this.proposal.dealId, this.proposal.id)
       .subscribe(() => 
       {
-        console.log("success")
+        this.router.navigate(['/proposals-on-deal', this.proposal?.dealId]);
       }, 
       error => 
       {
@@ -42,6 +44,10 @@ export class ProposalCardComponent {
     }
   }
   toContact() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/proposals-on-deal', this.proposal?.dealId]);
+  }
+
+  viewProposal() {
+    this.router.navigate(['/user-proposal-details', this.proposal?.id]);
   }
 }

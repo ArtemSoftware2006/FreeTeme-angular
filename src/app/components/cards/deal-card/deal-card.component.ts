@@ -36,4 +36,8 @@ export class DealCardComponent {
   onView() {
     this.router.navigate([this.routeTo, this.dealCard?.id]);
   }
+
+  toContact() {
+    this.router.navigate(['/proposals-on-deal', this.dealCard?.id]);
+  }
 }

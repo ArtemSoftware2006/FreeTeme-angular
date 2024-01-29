@@ -19,14 +19,26 @@
         <div class="deal-card__date">{{dealCard?.datePublication}}</div>
         <div class="deal-card__watch">Likes : 100</div>
         <div class="deal-card__like">Watch : {{dealCard?.views}}</div>
-        <button 
-            mat-raised-button 
-            class="deal-card__view-button" 
-            (click)="onView()"
-            color="primary"
-        >
-            View
-        </button>
+
+        @if (dealCard?.status !== 1) {
+            <button 
+                mat-raised-button 
+                class="deal-card__view-button" 
+                (click)="onView()"
+                color="primary"
+            >
+                View
+            </button>
+        }  
+        @else {
+            <button 
+                mat-raised-button 
+                color="accent"
+                (click)="toContact()"
+            >
+                To contact
+            </button>
+        }
     </div>
     <div class="deal-card__view">
     </div>

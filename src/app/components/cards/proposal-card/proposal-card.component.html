@@ -17,23 +17,23 @@
     </div>
     <div class="proposal-card__footet">
         <div class="proposal-card__date">Publish : {{proposal?.datePublish}}</div>
-        @if(proposal?.status === 0) {
+        <div class="proposal-card__btns">
+            @if(proposal?.status === 1) {
+                <button 
+                    mat-raised-button 
+                    color="accent"
+                    (click)="toContact()"
+                >
+                    To contact
+                </button>
+            }
             <button 
                 mat-raised-button 
                 color="primary"
-                (click)="approved()"
+                (click)="viewProposal()"
             >
-                Approved
+                View
             </button>
-        }
-        @else {
-            <button 
-                mat-raised-button 
-                color="accent"
-                (click)="toContact()"
-            >
-                To contact
-            </button>
-        }
+        </div>
     </div>
 </div>
