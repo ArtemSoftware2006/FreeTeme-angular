@@ -1,7 +1,11 @@
 <div class="user-proposals-page__wrapper">
-    <app-proposal-card 
-        *ngFor="let proposal of proposals"
-        [proposal]="proposal"
-    >
-    </app-proposal-card>
+    <div class="user-proposals-page__title">Your proposals</div>
+
+    <div class="user-proposals-page__content">
+        <app-proposal-card 
+            *ngFor="let proposal of proposals"
+            [proposal]="proposal"
+        >
+        </app-proposal-card>
+    </div>
 </div>

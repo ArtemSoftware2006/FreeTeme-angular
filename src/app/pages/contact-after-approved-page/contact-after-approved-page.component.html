@@ -1,4 +1,10 @@
 <div class="contact-after-approved-page__wrapper">
-    <app-user-contact-card [userSubject]="employee" [userId]="employeeId"></app-user-contact-card>
-    <app-user-contact-card [userSubject]="executor" [userId]="executorId"></app-user-contact-card>
+    <div class="contact-after-approved-page__col">
+        <h2 class="contact-after-approved-page__title">Employee</h2>
+        <app-user-contact-card [userSubject]="employee" [userId]="employeeId"></app-user-contact-card>
+    </div>
+    <div class="contact-after-approved-page__col">
+        <h2 class="contact-after-approved-page__title">Executor</h2>
+        <app-user-contact-card [userSubject]="executor" [userId]="executorId"></app-user-contact-card>
+    </div>
 </div>

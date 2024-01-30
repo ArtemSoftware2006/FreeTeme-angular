@@ -1,3 +1,5 @@
+@import "../../../shared/variables.scss";
+
 .contact-after-approved-page {
     &__wrapper {
         display: grid;
@@ -14,5 +16,12 @@
             padding: 20px;
         }
         
+    }
+
+    &__title {
+        color: $color-primary;
+        font-size: $font-size-1;
+        font-weight: bold;
+        margin: 0px 0px 10px 10px;
     }
 }
