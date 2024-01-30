@@ -24,6 +24,7 @@ const NEW_ICON =  `
   styleUrl: './deal-card.component.scss'
 })
 export class DealCardComponent {
+
   @Input() dealCard? : DealCard;
   @Input() routeTo : string = "/";
 
@@ -33,11 +34,19 @@ export class DealCardComponent {
     { 
       iconRegistry.addSvgIconLiteral('ok-icon', sanitizer.bypassSecurityTrustHtml(NEW_ICON));
     }
+
+  ngOnInit(): void {
+    console.log(this.dealCard);
+  }
   onView() {
     this.router.navigate([this.routeTo, this.dealCard?.id]);
   }
 
   toContact() {
     this.router.navigate(['/proposals-on-deal', this.dealCard?.id]);
+  }
+
+  closeDeal() {
+    throw new Error('Method not implemented.');
   }
 }

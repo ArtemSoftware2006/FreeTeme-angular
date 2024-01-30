@@ -17,10 +17,9 @@
     <div class="deal-card__description">{{dealCard?.description}}</div>
     <div class="deal-card__footer">
         <div class="deal-card__date">{{dealCard?.datePublication}}</div>
-        <div class="deal-card__watch">Likes : 100</div>
         <div class="deal-card__like">Watch : {{dealCard?.views}}</div>
 
-        @if (dealCard?.status !== 1) {
+        @if (dealCard?.status === 0) {
             <button 
                 mat-raised-button 
                 class="deal-card__view-button" 
@@ -30,14 +29,27 @@
                 View
             </button>
         }  
+        @else if(dealCard?.status === 1) {
+            <div class="deal-card__btns">
+                <button 
+                    mat-raised-button 
+                    color="accent"
+                    (click)="toContact()"
+                >
+                    To contact
+                </button>
+
+                <button 
+                    mat-raised-button 
+                    color="warn"
+                    (click)="closeDeal()"
+                >
+                    Close Deal
+                </button>
+            </div>
+        }
         @else {
-            <button 
-                mat-raised-button 
-                color="accent"
-                (click)="toContact()"
-            >
-                To contact
-            </button>
+            Заказ закрыт
         }
     </div>
     <div class="deal-card__view">
