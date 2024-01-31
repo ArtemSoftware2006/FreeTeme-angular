@@ -36,3 +36,5 @@ ec=project_create_wizard_noauth)
 6. Внедрить систему оплаты
 7. Поиск по категориям
 8. Заголовки для страниц user-deal, user-proposal, deals  **CRITICAL** ИСПРАВЛЕНО!
+9. Проверка, что AproximateDate Раньше сегодняшнего дня **CRITICAL**
+10. Добавить возможность посмотреть Заказ из Отклика (а не просто показывать DealId) **CRITICAL**

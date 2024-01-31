@@ -48,7 +48,7 @@ export class ProposalCreaeteFormComponent {
       const proposal : CreateProposal = {
         userId : this.user?.id as number,
         description : this.proposalForm.controls["description"].value as string,
-        price : this.proposalForm.controls["price"].value as number,
+        price : this.proposalForm.controls["price"].value,
         dealId : this.dealId as number
       };
 

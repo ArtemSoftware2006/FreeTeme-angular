@@ -2,7 +2,7 @@ import { DealCard } from "./deal";
 
 export interface CreateProposal {
     description : string,
-    price : number,
+    price : string,
     dealId : number,
     userId : number
 }
@@ -10,7 +10,7 @@ export interface CreateProposal {
 export interface ProposalDetails {
     id: number;
     description: string;
-    price: number;
+    price: string;
     datePublish: string;
     status: number;
     dealId: number;
