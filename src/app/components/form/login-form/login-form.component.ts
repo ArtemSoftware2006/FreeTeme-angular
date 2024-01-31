@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { PrimaryButtonComponent } from './../../UI/button/primary-button/primary-button.component';
 import { Component } from '@angular/core';
 import { FormInputComponent } from '../../UI/input/form-input/form-input.component';
@@ -16,7 +17,8 @@ import { Router } from '@angular/router';
 export class LoginFormComponent {
 
   constructor(public authService : AuthorizationService,
-    public router : Router) { }
+    public router : Router,
+    public notificationService : NotificationService) { }
 
   loginForm = new FormGroup({
     login: new FormControl('', [Validators.required, Validators.maxLength(30)]),
@@ -24,7 +26,7 @@ export class LoginFormComponent {
   });
 
   handleClick() {
-    console.log("click");
+    
   }
 
   onSubmit() {
@@ -41,6 +43,7 @@ export class LoginFormComponent {
       },
       error => {
         console.log(error);
+        this.notificationService.showError(error.error, 'Error');
       });
     }
   }

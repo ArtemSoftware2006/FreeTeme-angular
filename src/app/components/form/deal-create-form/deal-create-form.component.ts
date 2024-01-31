@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormInputComponent } from './../../UI/input/form-input/form-input.component';
 import { Component, EventEmitter, Output } from '@angular/core';
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { CategoryInputComponent } from '../../UI/input/category-input/category-input.component';
 import { SelectedCategory } from '../../../models/category';
+import { priceRangeValidator } from '../../../services/validators/price-range-validator';
 
 @Component({
   selector: 'app-deal-create-form',
@@ -20,13 +22,14 @@ import { SelectedCategory } from '../../../models/category';
 })
 export class DealCreateFormComponent {
   @Output() submitEvent : EventEmitter<boolean> = new EventEmitter();
-  dealCreateForm! : FormGroup // Добавь типизацию формы + не забывай ; в конце строк
-  user? : User | null
+  dealCreateForm! : FormGroup; // Добавь типизацию формы + не забывай ; в конце строк
+  user? : User | null;
   selectedCategories : number[] = [];
   constructor (public builder : FormBuilder,
     public dealService : DealService,
     public authService : AuthorizationService,
-    public router : Router) { }
+    public router : Router,
+    public notificationService : NotificationService) { }
 
   ngOnInit(): void {
     // Если ты используешь для работы с формами FormBuilder, то используй его и для создания контролов, смешивать не стоит
@@ -38,6 +41,9 @@ export class DealCreateFormComponent {
       maxPrice : new FormControl('', [Validators.required, Validators.min(0), Validators.max(1000000)]),
       location : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       date : new FormControl('', [Validators.required]),
+    },
+    {
+      validators : [priceRangeValidator]
     });
 
 
@@ -47,7 +53,7 @@ export class DealCreateFormComponent {
   }
 
   onSubmit() {
-
+    console.log(this.dealCreateForm.errors);
     if (this.user == null || this.dealCreateForm.invalid) {
 
       this.submitEvent.emit(false);
@@ -68,11 +74,12 @@ export class DealCreateFormComponent {
     error => {
       this.submitEvent.emit(false);
       console.log(error);
+      this.notificationService.showError(error.error, 'Error');
     });
   }
 
   toggleCategory($event: SelectedCategory) {
-    let category = this.selectedCategories.find(x => x == $event.id);
+    const category = this.selectedCategories.find(x => x == $event.id);
 
     if (category) {
       if (!$event.isSelected) {

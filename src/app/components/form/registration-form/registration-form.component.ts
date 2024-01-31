@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import { PrimaryButtonComponent } from '../../UI/button/primary-button/primary-b
 import { FormInputComponent } from '../../UI/input/form-input/form-input.component';
 import { Router } from '@angular/router';
 import { AuthorizationService } from '../../../services/authorization/authorization.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration-form',
@@ -17,7 +19,8 @@ export class RegistrationFormComponent {
   registerForm!: FormGroup;
   constructor(public builder: FormBuilder,
     public authService : AuthorizationService,
-    public router : Router) {  }
+    public router : Router,
+    public notificationService : NotificationService) {  }
 
   ngOnInit() {
     this.registerForm = this.builder.nonNullable.group({
@@ -42,8 +45,15 @@ export class RegistrationFormComponent {
       .subscribe(() => {
           this.router.navigate(['/home']);
         },
-        error => {
+        (error : HttpErrorResponse) => {
           console.log(error);
+
+          if (error.error.errors != null) {
+            this.notificationService.showError(error.error?.errors?.Password[0], 'Error');
+          }
+          else {
+            this.notificationService.showError(error.error, 'Error');
+          }
         });
     }
   }
