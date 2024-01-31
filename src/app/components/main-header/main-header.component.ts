@@ -27,6 +27,5 @@ export class MainHeaderComponent {
 
   toggleSidenav() {
     this.isOpenMenu = !this.isOpenMenu;
-    console.log(this.isOpenMenu);
   }
 }

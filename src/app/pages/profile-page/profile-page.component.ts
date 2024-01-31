@@ -33,7 +33,6 @@ export class ProfilePageComponent {
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
       this.user = user as User;
-      console.log(this.user);
     })
 
     if (this.user != null) {
@@ -68,8 +67,6 @@ export class ProfilePageComponent {
         balance : this.profile?.balance as number,
         ...$event as UserUpdateProfile,
       }
-
-      console.log(this.profile);
 
       this.profileKeyValues = Object.entries(this.profile);
 

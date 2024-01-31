@@ -30,7 +30,6 @@ export class FormInputComponent implements ControlValueAccessor {
 
   }
   onTouched() {
-    console.log(this.touched);
     if (!this.touched) {
       this.touched = true;
       this.notifyOnTouched(); 

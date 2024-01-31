@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 const NEW_ICON =  `
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
@@ -15,7 +16,7 @@ const NEW_ICON =  `
 @Component({
   selector: 'app-proposal-card',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule, DatePipe],
   templateUrl: './proposal-card.component.html',
   styleUrl: './proposal-card.component.scss'
 })

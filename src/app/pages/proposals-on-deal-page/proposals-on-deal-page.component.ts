@@ -41,8 +41,6 @@ export class ProposalsOnDealPageComponent {
         const confirmProposal = this.proposals
                                 .find((proposal : ProposalDetails) => proposal.status === 1);
 
-        console.log(confirmProposal);
-
         if (confirmProposal) {
           this.router.navigate(['/contact-after-approved', this.user?.id as number, confirmProposal.userId]);
         }

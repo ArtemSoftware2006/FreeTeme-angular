@@ -35,9 +35,6 @@ export class DealCardComponent {
       iconRegistry.addSvgIconLiteral('ok-icon', sanitizer.bypassSecurityTrustHtml(NEW_ICON));
     }
 
-  ngOnInit(): void {
-    console.log(this.dealCard);
-  }
   onView() {
     this.router.navigate([this.routeTo, this.dealCard?.id]);
   }
