@@ -1,3 +1,5 @@
+import { DealCard } from "./deal";
+
 export interface CreateProposal {
     description : string,
     price : number,
@@ -12,7 +14,7 @@ export interface ProposalDetails {
     datePublish: string;
     status: number;
     dealId: number;
-    deal: null;
+    deal: DealCard;
     userId: number;
     user: any;
 }

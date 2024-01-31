@@ -50,7 +50,6 @@ export class ProposalPanelComponent {
     this.proposalService.getByUserId(this.user?.id as number)
     .subscribe(result => {
       this.proposals = result;
-      console.log(this.proposals);
     }
     ,error => {
       console.log(error);

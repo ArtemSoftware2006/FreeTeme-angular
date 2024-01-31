@@ -5,8 +5,8 @@ export interface Deal {
     id : number,
     title : string,
     description : string,
-    minPrice : number,
-    maxPrice : number,
+    minPrice : string,
+    maxPrice : string,
     location : string,
     approximateDate : Date,
     status : number
@@ -15,7 +15,7 @@ export interface Deal {
 export interface DealCard extends Deal{
     views : number,
     alreadyResponded : boolean,
-    datePublication: Date,
+    datePublication: string,
     categories: Category[],
     creatorUserId: number
 }
@@ -23,8 +23,7 @@ export interface DealCard extends Deal{
 export interface DealDetails extends Deal {
     alreadyResponded : boolean,
     views :  number,
-    datePublication : Date,
-    status : number,
+    datePublication : string,
     categories : Category[],
     creatorUser : UserCard
 }

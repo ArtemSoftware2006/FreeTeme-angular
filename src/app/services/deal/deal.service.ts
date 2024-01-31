@@ -3,14 +3,17 @@ import { Injectable } from '@angular/core';
 import { DealCard, DealCreate, DealDetails } from '../../models/deal';
 import { catchError, map, throwError } from 'rxjs';
 import { RestService } from '../rest.service';
+import { DatePipe } from '@angular/common';
+import { CustomCurrencyPipe } from '../pipes/custom-currency';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DealService {
 
-
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService,
+    private datePipe: DatePipe,
+    private customCurrencyPipe : CustomCurrencyPipe) { }
 
   public getDeals(page: number, limit: number, userId : number) {
     return this.restService.restGET<HttpResponse<DealCard[]>>("/Deal/Deals",
@@ -28,10 +31,15 @@ export class DealService {
           return throwError(err);
         }),
         map((response: HttpResponse<DealCard[]>) => {
-          console.log(response);
           const totalCount = response.headers.get('X-Total-Count');
+          const deals = response.body?.map(deal => {
+            deal.datePublication = this.datePipe.transform(deal.datePublication, 'dd.MM.yyyy HH:mm:ss') as string;
+            deal.minPrice = this.customCurrencyPipe.transform(Number(deal.minPrice));
+            deal.maxPrice = this.customCurrencyPipe.transform(Number(deal.maxPrice));
+            return deal;
+          });
 
-          return { deals: response.body, total: totalCount };
+          return { deals: deals, total: totalCount };
         })
       );
   }
@@ -54,6 +62,13 @@ export class DealService {
       .pipe(
         catchError(err => {
           return throwError(err);
+        }),
+        map((deal: DealDetails) => {
+          deal.datePublication = this.datePipe.transform(deal.datePublication, 'dd.MM.yyyy HH:mm:ss') as string;
+          deal.minPrice = this.customCurrencyPipe.transform(Number(deal.minPrice));
+          deal.maxPrice = this.customCurrencyPipe.transform(Number(deal.maxPrice));
+
+          return deal;
         })
       );
   }
@@ -64,6 +79,17 @@ export class DealService {
       .pipe(
         catchError(err => {
           return throwError(err);
+        }),
+        map((deals: DealDetails[]) => {
+            deals = deals?.map(deal => {
+            deal.datePublication = this.datePipe.transform(deal.datePublication, 'dd.MM.yyyy HH:mm:ss') as string;
+            deal.minPrice = this.customCurrencyPipe.transform(Number(deal.minPrice));
+            deal.maxPrice = this.customCurrencyPipe.transform(Number(deal.maxPrice));
+            return deal;
+          });
+
+
+          return deals;
         })
       );
   }
@@ -73,6 +99,17 @@ export class DealService {
     .pipe(
       catchError(err => {
         return throwError(err);
+      }),
+      map((deals: DealDetails[]) => {
+        deals = deals?.map(deal => {
+          deal.datePublication = this.datePipe.transform(deal.datePublication, 'dd.MM.yyyy HH:mm:ss') as string;
+          deal.minPrice = this.customCurrencyPipe.transform(Number(deal.minPrice));
+          deal.maxPrice = this.customCurrencyPipe.transform(Number(deal.maxPrice));
+          return deal;
+        });
+
+
+        return deals;
       })
     );
   }
