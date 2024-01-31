@@ -12,7 +12,12 @@
             }
             {{dealCard?.title}}
         </div>
-        <div class="deal-card__price"><span class="deal-card__price-text">Price : </span>{{dealCard?.minPrice}}-{{dealCard?.maxPrice}}</div>
+        <div class="deal-card__price">
+            <span class="deal-card__price-text">Price : </span> 
+            {{dealCard?.minPrice}} 
+              -  
+            {{dealCard?.maxPrice}}
+        </div>
     </div>
     <div class="deal-card__description">{{dealCard?.description}}</div>
     <div class="deal-card__footer">

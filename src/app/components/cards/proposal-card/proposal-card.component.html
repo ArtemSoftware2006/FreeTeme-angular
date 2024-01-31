@@ -16,7 +16,7 @@
         <div class="proposal-card__description">{{proposal?.description}}</div>
     </div>
     <div class="proposal-card__footet">
-        <div class="proposal-card__date">Publish : {{proposal?.datePublish}}</div>
+        <div class="proposal-card__date">Publish : {{proposal?.datePublish | date : "dd.MM.yyyy HH:mm:ss"}}</div>
         <div class="proposal-card__btns">
             @if(proposal?.status === 1) {
                 <button 
