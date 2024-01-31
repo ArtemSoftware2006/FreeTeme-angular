@@ -1,15 +1,17 @@
 <div class="user-proposal-details-page__wrapper">
     <div class="user-proposal-details-page__user">
         <app-user-card [userSubject]="userSubject"></app-user-card>
-
-        <button 
-            class="user-proposal-details-page__approved-btn"
-            mat-raised-button 
-            color="primary"
-            (click)="approved()"
-        >
+        
+        @if (proposal?.userId !== currentUser?.id) {
+            <button 
+                class="user-proposal-details-page__approved-btn"
+                mat-raised-button 
+                color="primary"
+                (click)="approved()"
+            >
             Approved
-        </button>
+            </button>
+        }
     </div>
     <div class="user-proposal-details-page__content">
         <mat-card>

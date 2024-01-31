@@ -1,6 +1,11 @@
 @import "../../../shared/variables.scss";
 
 .proposals-on-deal-page {
+
+    &__wrapepr {
+        padding: 10px;
+    }
+
     &__no-proposals {
         font-size: $font-size-1;
         color: $color-primary;

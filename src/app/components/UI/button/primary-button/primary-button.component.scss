@@ -7,6 +7,7 @@
     letter-spacing: 1px;
     border: 3px solid $color-primary;
     text-transform: uppercase;
+    cursor: pointer;
 
     &:hover {
         background-color: $color-secondary;

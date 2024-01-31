@@ -20,12 +20,12 @@
     &__description {
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: url("../../../assets/main-page-backcolor.jpg");
+        background-image: url("/assets/main-page-backcolor.jpg");
 
         &-content {
             position: relative;
-            top: 300px;
-            left: 181px;
+            top: 320px;
+            left: 200px;
             max-width: 520px;
             letter-spacing: 2px;
             line-height: 1.5;
@@ -35,7 +35,7 @@
         @media screen and (max-width: 768px) {
             &-content {
                 position: relative;
-                top: 350px;
+                top: 300px;
                 left: 150px;
                 max-width: 250px;
                 letter-spacing: 2px;
@@ -69,11 +69,14 @@
 
     &__content {
         margin-top: 50px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-row: auto;
         gap: 20px;
-        justify-content:space-around;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__col {
